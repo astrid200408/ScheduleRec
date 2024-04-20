@@ -1,0 +1,49 @@
+{
+  "courses": [
+    {
+      "code": "CSCI111",
+      "name": "Computer Science",
+      "schedule": [
+        {
+          "days": ["Monday", "Wednesday", "Friday"],
+          "timeSlots": [
+            { "startHour": 9, "startMinute": 30, "endHour": 11, "endMinute": 0 }
+          ]
+        }
+      ],
+      "difficulty_score": 3,
+      "professor": "John Smith",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "APMA9292",
+      "name": "Math",
+      "schedule": [
+        {
+          "days": ["Tuesday", "Thursday"],
+          "timeSlots": [
+            { "startHour": 10, "startMinute": 0, "endHour": 12, "endMinute": 0 }
+          ]
+        }
+      ],
+      "difficulty_score": 4,
+      "professor": "Walt Whitman",
+      "containsAdditionalComp": true
+    },
+    {
+      "code": "MATH333",
+      "name": "Calculus",
+      "schedule": [
+        {
+          "days": ["Monday", "Wednesday", "Friday"],
+          "timeSlots": [
+            { "startHour": 13, "startMinute": 30, "endHour": 15, "endMinute": 0 }
+          ]
+        }
+      ],
+      "difficulty_score": 5,
+      "professor": "Brown",
+      "containsAdditionalComp": false
+    }
+  ]
+}
