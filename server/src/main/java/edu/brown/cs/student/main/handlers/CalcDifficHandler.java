@@ -1,7 +1,8 @@
 package edu.brown.cs.student.main.handlers;
 
-import edu.brown.cs.student.main.handlers.Utils.CalcDiffic;
-import edu.brown.cs.student.main.handlers.Utils.moshiAdapter;
+import edu.brown.cs.student.main.handlers.utils.CalcDiffic;
+import edu.brown.cs.student.main.handlers.utils.CourseObject;
+import edu.brown.cs.student.main.handlers.utils.moshiAdapter;
 import java.util.*;
 import spark.Request;
 import spark.Response;

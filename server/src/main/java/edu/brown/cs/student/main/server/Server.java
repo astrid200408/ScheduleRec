@@ -4,8 +4,8 @@ import static spark.Spark.after;
 
 import edu.brown.cs.student.main.handlers.AddCourses;
 import edu.brown.cs.student.main.handlers.CalcDifficHandler;
-import edu.brown.cs.student.main.handlers.CourseObject;
 import edu.brown.cs.student.main.handlers.storage.FirebaseUtilities;
+import edu.brown.cs.student.main.handlers.utils.CourseObject;
 import java.io.IOException;
 import spark.Spark;
 

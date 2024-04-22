@@ -1,7 +1,6 @@
-package edu.brown.cs.student.main.handlers.Utils;
+package edu.brown.cs.student.main.handlers.utils;
 
-import edu.brown.cs.student.main.handlers.CourseObject;
-import edu.brown.cs.student.main.handlers.CourseObject.Course;
+import edu.brown.cs.student.main.handlers.utils.CourseObject.Course;
 import java.util.*;
 
 public class CalcDiffic {

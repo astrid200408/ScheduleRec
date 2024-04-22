@@ -1,4 +1,4 @@
-package edu.brown.cs.student.main.handlers.Utils;
+package edu.brown.cs.student.main.handlers.utils;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
