@@ -1,7 +1,7 @@
 package edu.brown.cs.student.main.handlers;
 
-import edu.brown.cs.student.main.handlers.Utils.moshiAdapter;
 import edu.brown.cs.student.main.handlers.storage.StorageInterface;
+import edu.brown.cs.student.main.handlers.utils.moshiAdapter;
 import java.util.HashMap;
 import java.util.Map;
 import spark.Request;
