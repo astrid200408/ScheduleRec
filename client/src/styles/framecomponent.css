@@ -1,0 +1,135 @@
+.frameChild {
+  align-self: stretch;
+  height: 55px;
+  position: relative;
+  border-radius: 50%;
+  background-color: var(--color-gainsboro);
+}
+.ellipseWrapper {
+  flex: 0.8466;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-3xs) 0 0;
+  box-sizing: border-box;
+  min-width: 42px;
+}
+.frameInner,
+.frameItem {
+  height: 55px;
+  position: relative;
+  border-radius: 50%;
+  background-color: var(--color-gainsboro);
+}
+.frameItem {
+  flex: 1;
+  min-width: 36px;
+}
+.frameInner {
+  align-self: stretch;
+}
+.ellipseContainer {
+  flex: 0.8742;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-5xs) 0 0;
+  box-sizing: border-box;
+  min-width: 42px;
+}
+.ellipseDiv {
+  align-self: stretch;
+  height: 55px;
+  position: relative;
+  border-radius: 50%;
+  background-color: var(--color-gainsboro);
+}
+.ellipseFrame,
+.frameGroup {
+  display: flex;
+  align-items: flex-start;
+}
+.ellipseFrame {
+  flex: 0.8466;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 var(--padding-3xs) 0 0;
+  box-sizing: border-box;
+  min-width: 42px;
+}
+.frameGroup {
+  width: 359px;
+  flex-direction: row;
+  justify-content: center;
+  gap: var(--gap-sm-4);
+  max-width: 100%;
+}
+.includeParent {
+  width: 619px;
+  justify-content: flex-start;
+  gap: var(--gap-8xl);
+}
+.componentInstance,
+.departmentLabel,
+.includeParent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.componentInstance {
+  align-self: stretch;
+  justify-content: flex-start;
+  gap: var(--gap-13xl);
+}
+.departmentLabel {
+  width: 619px;
+  justify-content: flex-end;
+  padding: 0 0 var(--padding-9xs);
+  box-sizing: border-box;
+}
+.frameParent,
+.hoursAreaInner {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+.frameParent {
+  flex: 1;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+.hoursAreaInner {
+  align-self: stretch;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 0 var(--padding-12xs);
+  box-sizing: border-box;
+  text-align: left;
+  font-size: var(--font-size-5xl);
+  color: var(--color-white);
+  font-family: var(--font-lilita-one);
+}
+@media screen and (max-width: 1300px) {
+  .frameParent {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 800px) {
+  .componentInstance {
+    gap: var(--gap-base);
+  }
+}
+@media screen and (max-width: 450px) {
+  .ellipseContainer,
+  .ellipseFrame,
+  .ellipseWrapper {
+    flex: 1;
+  }
+  .frameGroup {
+    flex-wrap: wrap;
+  }
+}

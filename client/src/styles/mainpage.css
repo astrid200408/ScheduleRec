@@ -1,0 +1,126 @@
+.coursesIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.frameChild {
+  position: absolute;
+  height: calc(100% - 20.4px);
+  top: 10px;
+  bottom: 10.4px;
+  left: 642px;
+  max-height: 100%;
+  width: 318px;
+  z-index: 1;
+}
+.frameItem {
+  left: 0;
+  background-color: var(--color-maroon);
+  }
+.frameChild1,
+.frameChild2,
+.frameInner,
+.frameItem,
+.rectangleDiv {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  width: 260.8px;
+}
+.frameInner {
+  left: 260.8px;
+  background-color: var(--color-brown);
+}
+.frameChild1,
+.frameChild2,
+.rectangleDiv {
+  background-color: var(--color-maroon);
+}
+.rectangleDiv {
+  left: 521.6px;
+    z-index: 1;
+}
+.frameChild1,
+.frameChild2 {
+  left: 1041.2px;
+}
+.frameChild2 {
+  left: 782.4px;
+  background-color: var(--color-brown);
+  z-index: 1;
+}
+.vectorParent {
+  position: absolute;
+  top: 27px;
+  left: 22px;
+  width: 1302px;
+  height: 570.4px;
+  z-index: 2;
+}
+.coursesParent {
+  align-self: stretch;
+  height: 624px;
+   position: relative;
+}
+.hoursArea,
+.saveButtons,
+.saveComponents {
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.saveComponents {
+  align-self: stretch;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 var(--padding-2xl) 0 var(--padding-xl);
+  box-sizing: border-box;
+}
+.hoursArea,
+.saveButtons {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.saveButtons {
+  width: 1343px;
+  gap: 15px;
+}
+.hoursArea {
+  flex: 1;
+  gap: 41px;
+}
+.departmentComponent,
+.mainPage {
+  display: flex;
+  box-sizing: border-box;
+}
+.departmentComponent {
+  width: 1417px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 26px;
+  max-width: 100%;
+}
+.mainPage {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-white);
+   overflow: hidden;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0 0 var(--padding-lgi);
+  gap: 30px;
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 800px) {
+    .hoursArea {
+    gap: var(--gap-xl);
+  }
+}

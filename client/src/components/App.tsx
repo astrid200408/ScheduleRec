@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import "../styles/App.css";
 import AuthRoute from "./AuthRoute";
+import MainPage from "./MainPage";
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -19,9 +20,11 @@ function App() {
   return (
     <div className="App">
       <p className="App-header">
-        <h1>Header Text</h1>
+        {/* <h1>Header Text</h1> */}
       </p>
-      <AuthRoute />
+      <MainPage/>
+      {/* <AuthRoute /> */}
+
     </div>
   );
 }
