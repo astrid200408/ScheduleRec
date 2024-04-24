@@ -1,13 +1,14 @@
 package Courses;
+
 import static Courses.CourseDatasource.getCoursesByDepartment;
 
 import Courses.CourseObject.Course;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import com.squareup.moshi.JsonAdapter;
-import com.squareup.moshi.Moshi;
 import java.util.List;
 
 public class JSONParser {
@@ -30,6 +31,7 @@ public class JSONParser {
 
     return adapter.fromJson(source);
   }
+
   public CourseObject getParsedJSON() {
     return this.parsedJSON;
   }
@@ -66,8 +68,5 @@ public class JSONParser {
     }
 
     System.out.println("done");
-
   }
-
-
 }
