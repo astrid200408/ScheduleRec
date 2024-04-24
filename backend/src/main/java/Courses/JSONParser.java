@@ -1,10 +1,14 @@
 package Courses;
+import static Courses.CourseDatasource.getCoursesByDepartment;
+
+import Courses.CourseObject.Course;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
+import java.util.List;
 
 public class JSONParser {
 
@@ -55,6 +59,11 @@ public class JSONParser {
   public static void main(String[] args) throws FileNotFoundException {
     JSONParser myparser = new JSONParser();
     myparser.createCourses();
+    List<Course> compCourses = getCoursesByDepartment(myparser.parsedJSON, "CS");
+    for (CourseObject.Course course : compCourses) {
+      System.out.println("Course Code: " + course.code);
+      System.out.println("Course Name: " + course.name);
+    }
 
     System.out.println("done");
 
