@@ -2,8 +2,10 @@ package edu.brown.cs.student.main.server;
 
 import static spark.Spark.after;
 
-import edu.brown.cs.student.main.handlers.AddCourses;
+import edu.brown.cs.student.main.handlers.AddCoursesHandler;
 import edu.brown.cs.student.main.handlers.CalcDifficHandler;
+import edu.brown.cs.student.main.handlers.GetCourseHandler;
+import edu.brown.cs.student.main.handlers.RecCourseHandler;
 import edu.brown.cs.student.main.handlers.storage.FirebaseUtilities;
 import edu.brown.cs.student.main.handlers.utils.CourseObject;
 import java.io.IOException;
@@ -25,12 +27,14 @@ public class Server {
 
     // StorageInterface firebaseUtils;
     try {
-      CourseObject courses = new CourseObject();
+      CourseObject courseObject = new CourseObject();
       FirebaseUtilities utils = new FirebaseUtilities();
 
       // creating handlers here
-      Spark.get("get-difficulty", new CalcDifficHandler(courses));
-      Spark.get("add-courses", new AddCourses(utils));
+      Spark.get("get-difficulty", new CalcDifficHandler(courseObject));
+      Spark.get("add-courses", new AddCoursesHandler(utils));
+      Spark.get("recommend-courses", new RecCourseHandler(courseObject));
+      Spark.get("get-course-object", new GetCourseHandler(courseObject));
 
       Spark.notFound(
           (request, response) -> {

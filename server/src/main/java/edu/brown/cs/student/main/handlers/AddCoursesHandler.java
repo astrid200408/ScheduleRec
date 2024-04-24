@@ -8,11 +8,11 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
-public class AddCourses implements Route {
+public class AddCoursesHandler implements Route {
 
   public StorageInterface storageHandler;
 
-  public AddCourses(StorageInterface storageHandler) {
+  public AddCoursesHandler(StorageInterface storageHandler) {
     this.storageHandler = storageHandler;
   }
 
