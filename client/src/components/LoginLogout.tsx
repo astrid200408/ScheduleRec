@@ -1,5 +1,6 @@
 import React from "react";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import LoginPage from "./LoginPage";
 
 export interface ILoginPageProps {
   authing: boolean;
@@ -30,7 +31,9 @@ const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
 
   return (
     <div className="login-box">
-      <h1>Login Page</h1>
+      {/* <h1>Login Page</h1> */}
+      <LoginPage/>
+      
       <button
         className="google-login-button"
         onClick={() => signInWithGoogle()}

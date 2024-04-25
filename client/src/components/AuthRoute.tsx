@@ -12,8 +12,8 @@ function AuthRoute() {
 
   return (
     <>
-      <LoginLogout authing={authing} setAuthing={setAuthing} />
       {authing ? <Example /> : null}
+      <LoginLogout authing={authing} setAuthing={setAuthing} />
     </>
   );
 }
