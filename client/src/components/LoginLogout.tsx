@@ -31,15 +31,13 @@ const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
 
   return (
     <div className="login-box">
-      {/* <h1>Login Page</h1> */}
-      <LoginPage/>
-      
+      <LoginPage />
       <button
         className="google-login-button"
         onClick={() => signInWithGoogle()}
         disabled={props.authing}
       >
-        Sign in with Google
+        Login
       </button>
     </div>
   );

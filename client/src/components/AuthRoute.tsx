@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Example from "./example";
+import Example from "./Example";
 import LoginLogout from "./LoginLogout";
 
 function AuthRoute() {

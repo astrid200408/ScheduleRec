@@ -1,0 +1,22 @@
+.login-page {
+    display: flex;
+    flex-direction: column;
+    color: #691C1C;
+    align-items: center;
+    justify-content: center;
+}
+
+.google-login-button {
+    border:none;
+    width: 10em;
+    height: 5em;
+    border-radius: 4em;
+    border-color:black;
+    background-color: #691C1C;
+}
+
+.bear-image {
+    user-select: none;
+    width: 15em;
+    height: auto;
+}

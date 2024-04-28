@@ -1,14 +1,17 @@
 /*
   This class produces styling for app components
 */
+
+
 .App {
-  text-align: center;
+  /* text-align: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  background-color: white; */
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 8vh;
   display: flex;
@@ -17,7 +20,7 @@
   justify-content: center;
   font-size: calc(1px + 2vmin);
   color: white;
-}
+} */
 
 .login {
   margin: 2%;
