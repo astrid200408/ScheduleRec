@@ -15,8 +15,14 @@
     background-color: #691C1C;
 }
 
+.login-text {
+    padding-top: 4em;
+    padding-bottom: 4em;
+}
+
 .bear-image {
     user-select: none;
     width: 15em;
     height: auto;
+    padding-bottom: 4em;
 }

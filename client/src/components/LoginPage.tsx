@@ -5,7 +5,7 @@ const imageLink = "https://media.istockphoto.com/id/1461182793/vector/cute-teddy
 const LoginPage = () => {
   return (
     <div className="login-page">
-      <p>
+      <p className='login-text'>
         Login with your brown.edu email to access the Critical Schedule Maker!
       </p>
       <img
