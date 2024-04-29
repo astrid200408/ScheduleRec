@@ -35,7 +35,7 @@ public class JSONParser {
   }
 
   public void createCourses() {
-    String filePath = "server/src/main/java/edu/brown/cs/student/main/data/mockCourses.json";
+    String filePath = "src/main/java/edu/brown/cs/student/main/data/mockCourses.json";
     try {
       // ***************** READING THE FILE *****************
       FileReader jsonReader = new FileReader(filePath);

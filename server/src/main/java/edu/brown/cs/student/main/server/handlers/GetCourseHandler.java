@@ -26,7 +26,7 @@ public class GetCourseHandler implements Route {
 
     // find course from code
     for (Course course : this.classes.courses) {
-      if (classCode == course.code) {
+      if (classCode.equals(course.code)) {
         returnable = course;
         break;
       }

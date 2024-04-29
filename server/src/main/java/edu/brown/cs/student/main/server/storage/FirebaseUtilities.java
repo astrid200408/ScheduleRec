@@ -31,7 +31,6 @@ public class FirebaseUtilities implements StorageInterface {
         Paths.get(workingDirectory, "src", "main", "resources", "firebase_config.json");
     // ^-- if your /resources/firebase_config.json exists but is not found,
     // try printing workingDirectory and messing around with this path.
-
     FileInputStream serviceAccount = new FileInputStream(firebaseConfigPath.toString());
 
     FirebaseOptions options =

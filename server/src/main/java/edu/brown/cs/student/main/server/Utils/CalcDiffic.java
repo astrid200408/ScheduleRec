@@ -20,7 +20,7 @@ public class CalcDiffic {
     for (int i = 0; i < count; i++) {
       String courseCode = givenClasses.get(i);
       for (Course course : this.classes) {
-        if (course.code == courseCode) {
+        if (course.code.equals(courseCode)) {
           // add up difficulty score
           currScore += course.difficulty_score;
         }

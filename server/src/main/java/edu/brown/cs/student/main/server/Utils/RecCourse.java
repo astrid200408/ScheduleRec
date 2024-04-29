@@ -28,13 +28,16 @@ public class RecCourse {
 
     int count = (int) givenClasses.stream().filter(item -> item != null).count();
     // find out how many courses we need to recommend
-    int classesWanted = classTotal - count;
-
+    int classesWanted = classTotal - count; // if
     // around what difficulty should each be
+//    System.out.println("score wanted: " + scoreWanted );
+//    System.out.println("classes wanted: "+ classesWanted);
     Difficulty difficNeeded = Difficulty.getDifficulty(scoreWanted / classesWanted);
+    System.out.println(difficNeeded);
 
     List<Course> filteredCourses = this.classes.courses;
     List<Course> toReturn = new ArrayList<>();
+    System.out.println(filteredCourses);
 
     // find courses that match this and any given filters
     if (filter != null) {
@@ -49,7 +52,9 @@ public class RecCourse {
       if (classesWanted == 0) {
         break;
       }
-      if (Difficulty.getDifficulty(course.difficulty_score) == difficNeeded) {
+      if (Difficulty.getDifficulty(course.difficulty_score).toString().equals(difficNeeded.toString())) {
+        System.out.println(difficNeeded);
+        System.out.println(Difficulty.getDifficulty(course.difficulty_score));
         toReturn.add(course);
         classesWanted -= 1;
       }
