@@ -1,6 +1,7 @@
 import React from "react";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import LoginPage from "./LoginPage";
+import LogoutPage from "./LogoutPage";
 
 export interface ILoginPageProps {
   authing: boolean;
@@ -46,6 +47,7 @@ const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
 const Logout: React.FunctionComponent<ILoginPageProps> = (props) => {
   return (
     <div className="logout-box">
+      <LogoutPage/>
       <button
         className="SignOut"
         onClick={() => {

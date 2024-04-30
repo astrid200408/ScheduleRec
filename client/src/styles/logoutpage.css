@@ -1,0 +1,92 @@
+.input-fields {
+    display: flex;
+    justify-content: space-between;
+}
+
+.include-div, .department-div {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2em;
+}
+
+.include-div {
+    margin-left: 10em;
+}
+
+.department-div {
+    margin-right: 10em;
+}
+
+.include-button, .department-button {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.button-div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.class-buttons {
+    display: flex;
+}
+
+.class-1, .class-2, .class-3, .class-4, .class-5 {
+    margin-right: 0;
+    margin-left: 1em;
+    width: 5em;
+    height: 5em;
+    border: none;
+    border-radius: 50%;
+}
+
+.hours-buttons {
+    display: flex;
+
+}
+
+.less20, .btwn2030, .plus30, .any {
+    border: none;
+    margin-right: 1em;
+    margin-left: 0;
+    width: 7em;
+    height: 5em;
+    border-radius: 40%;
+}
+
+.schedule-div {
+    display: flex;
+    justify-content: center;
+}
+
+.back-rectangle {
+    width: 80em;
+    height: 30em;
+    background-color: brown;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 10%;
+}
+
+.monbox {
+    border: none;
+    width: 16em;
+    height: 30em;
+}
+
+.tuesbox {
+
+}
+
+.wedbox {
+
+}
+
+.thursbox {
+
+}
+
+.fribox {
+    
+}

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Example from "./Example";
 import LoginLogout from "./LoginLogout";
+import LogoutPage from "./LogoutPage";
 
 function AuthRoute() {
   const [authing, setAuthing] = useState(false);
@@ -12,7 +12,8 @@ function AuthRoute() {
 
   return (
     <>
-      {authing ? <Example /> : null}
+      {/* {authing ? <LogoutPage /> : null} */}
+      {/* change true to authing later */}
       <LoginLogout authing={authing} setAuthing={setAuthing} />
     </>
   );
