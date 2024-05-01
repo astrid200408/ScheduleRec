@@ -56,6 +56,4 @@ const LogoutPage = () => {
   );
 }
 
-  const changeColor = async (Button: button) => {
-  };
 export default LogoutPage
