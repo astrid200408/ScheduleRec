@@ -3,6 +3,13 @@
     justify-content: space-between;
 }
 
+.department-input, .include-input {
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 0 2em 2em 0; 
+    width: 30em;
+}
+
 .include-div, .department-div {
     display: flex;
     justify-content: flex-start;
@@ -20,6 +27,32 @@
 .include-button, .department-button {
     margin-right: 0;
     margin-left: 0;
+    height: 5em;
+    width: 7em;
+    font-size: 1em;
+    font-weight: bolder;
+    background-color: #5F4343;
+    border: none;
+    border-radius: 20% 0 0 20%; 
+}
+
+.include-input, .department-input {
+    font-size: 1.25em;
+    text-indent: 1em;
+    color: #FF92A5;
+    font-weight: bold;
+    caret-color: #FF92A5;
+}
+
+.include-input::placeholder, .department-input::placeholder{
+    font-size: 1.25em;
+    text-indent: 1em;
+    color: #818589;
+    font-weight: bold;
+}
+
+.include-input:focus, .department-input:focus {
+    outline: none;
 }
 
 .button-div {
@@ -30,6 +63,7 @@
 
 .class-buttons {
     display: flex;
+    margin-left: 9em;
 }
 
 .class-1, .class-2, .class-3, .class-4, .class-5 {
@@ -39,11 +73,15 @@
     height: 5em;
     border: none;
     border-radius: 50%;
+    background-color: #D9D9D9;
+    font-size: 1em;
+    font-weight: bolder;
+    color: #818589;
 }
 
 .hours-buttons {
     display: flex;
-
+    margin-right: 9em;
 }
 
 .less20, .btwn2030, .plus30, .any {
@@ -53,40 +91,65 @@
     width: 7em;
     height: 5em;
     border-radius: 40%;
+    background-color: #D9D9D9;
+    font-size: 1em;
+    font-weight: bolder;
+    color: #818589;
 }
 
 .schedule-div {
     display: flex;
     justify-content: center;
+    margin-top: 2em;
 }
 
 .back-rectangle {
-    width: 80em;
-    height: 30em;
-    background-color: brown;
+    display: flex;
+    width: 82em;
+    height: 32em;
+    background-color: rgb(193, 87, 87);
     margin-top: 1em;
     margin-bottom: 1em;
-    border-radius: 10%;
+    border-radius: 1%;
 }
 
 .monbox {
     border: none;
+    margin-top: 1em;
+    margin-left: 1em;
     width: 16em;
     height: 30em;
+    background-color: #691C1C;
 }
 
 .tuesbox {
-
+    border: none;
+    margin-top: 1em;
+    width: 16em;
+    height: 30em;
+    background-color: #903939;
 }
 
 .wedbox {
+    margin-top: 1em;
+    width: 16em;
+    height: 30em;
+    background-color: #691C1C;
 
 }
 
 .thursbox {
+    margin-top: 1em;
+    width: 16em;
+    height: 30em;
+    background-color: #903939;
 
 }
 
 .fribox {
+    margin-top: 1em;
+    width: 16em;
+    height: 30em;
+    background-color: #691C1C;
     
 }
