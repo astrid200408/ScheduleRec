@@ -1,25 +1,15 @@
 .input-fields {
   display: flex;
   justify-content: space-between;
-  margin: 20px; /* C*/
+  margin: 1%;
 }
 
 .include-div,
 .department-div {
   display: flex;
   align-items: center;
-  width: 48%; /* C */
-  /* justify-content: flex-start; */
-  /* margin-top: 2em; */
+  width: 48%;
 }
-
-/* .include-div {
-    margin-left: 10em;
-}
-
-.department-div {
-    margin-right: 10em;
-} */
 
 .include-input,
 .department-input {
@@ -29,17 +19,11 @@
   border-radius: 0 5px 5px 0;
   border: none;
   background-color: #d9d9d9;
-  /* font-size: 1.25em; */
-  /* text-indent: 1em; */
   color: #ff92a5;
-  /* font-weight: bold; */
   caret-color: #ff92a5;
 }
 
-.include-button,
-.department-button {
-  /* margin-right: 0; */
-  /* margin-left: 0; */
+.include-button, .department-button {
   height: 2.5em;
   width: 20%;
   font-size: 1em;
@@ -52,7 +36,6 @@
 .include-input::placeholder,
 .department-input::placeholder {
   font-size: 1.25em;
-  /* text-indent: 1em; */
   color: #818589;
   font-weight: bold;
 }
@@ -70,19 +53,13 @@
 
 .class-buttons {
   display: flex;
-  /* margin-left: 9em; */
-  /* justify-content: space-between; */
   gap:20px;
   flex-wrap: nowrap;
 }
 
 .class-1, .class-2, .class-3, .class-4, .class-5 {
-  /* margin-right: 0; */
-  /* margin-left: 1em; */
   width: 5em;
   height: 5em;
-
-  /* padding: 10px 20px; */
   border: none;
   border-radius: 50%;
   background-color: #d9d9d9;
@@ -94,13 +71,10 @@
 .hours-buttons {
   display: flex;
   gap: 20px;
-  /* flex-wrap: nowrap; */
 }
 
 .less20, .btwn2030, .plus30, .any {
   border: none;
-  /* margin-right: 1em; */
-  /* margin-left: 0; */
   width: 7em;
   height: 5em;
   border-radius: 20px;
@@ -116,35 +90,28 @@
   align-items: center;
   margin-top: 1em;
   width: 100%;
-  /* margin-top: 2em; */
 }
 
 .back-rectangle {
   display: flex;
   width: 95%;
-  height: 32em;
+  height: 50vh;
   background-color: rgb(193, 87, 87);
-  /* margin-top: 1em; */
-  /* margin-bottom: 1em; */
   border-radius: 5px;
 }
 
 .monbox, .wedbox, .fribox {
   flex-grow: 1;
-  /* margin: 1%; */
   margin-top: 1%;
   margin-bottom: 1%;
   background-color: #691c1c;
-  /* border-radius: 5px; */
 }
 
 .tuesbox, .thursbox {
   flex-grow: 1;
-  /* margin: 1%; */
   margin-top: 1%;
   margin-bottom: 1%;
   background-color: #903939;
-  /* border-radius: 5px; */
 }
 
 .monbox {
@@ -160,7 +127,7 @@
   justify-content: center;
   gap: 3%;
   margin-top: 1%;
-  /* margin-bottom: 1%; */
+  margin-bottom: 1%;
 }
 
 .previous-button, .save-button, .random-button {
