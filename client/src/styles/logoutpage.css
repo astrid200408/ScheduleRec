@@ -1,19 +1,14 @@
 .input-fields {
     display: flex;
     justify-content: space-between;
-}
-
-.department-input, .include-input {
-    background-color: #D9D9D9;
-    border: none;
-    border-radius: 0 2em 2em 0; 
-    width: 30em;
+    width: 100%;
 }
 
 .include-div, .department-div {
     display: flex;
     justify-content: flex-start;
     margin-top: 2em;
+    width: 50%;
 }
 
 .include-div {
@@ -24,7 +19,18 @@
     margin-right: 10em;
 }
 
-.include-button, .department-button {
+.department-input, .include-input {
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 0 2em 2em 0; 
+    font-size: 1.25em;
+    text-indent: 1em;
+    color: #FF92A5;
+    font-weight: bold;
+    caret-color: #FF92A5;
+}
+
+.department-button, .include-button {
     margin-right: 0;
     margin-left: 0;
     height: 5em;
@@ -34,14 +40,6 @@
     background-color: #5F4343;
     border: none;
     border-radius: 20% 0 0 20%; 
-}
-
-.include-input, .department-input {
-    font-size: 1.25em;
-    text-indent: 1em;
-    color: #FF92A5;
-    font-weight: bold;
-    caret-color: #FF92A5;
 }
 
 .include-input::placeholder, .department-input::placeholder{
@@ -152,4 +150,26 @@
     height: 30em;
     background-color: #691C1C;
     
+}
+
+.utility-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 3%;
+}
+
+.previous-button, .save-button, .random-button {
+    margin-right: 0;
+    margin-left: 0;
+
+    border: none;
+    /* margin-right: 1em;
+    margin-left: 0; */
+    width: 7em;
+    height: 5em;
+    border-radius: 40%;
+    background-color: #D9D9D9;
+    font-size: 1em;
+    font-weight: bolder;
+    color: #818589;
 }

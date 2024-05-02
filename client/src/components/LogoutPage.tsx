@@ -37,9 +37,7 @@ const LogoutPage = () => {
           <button className="less20">&lt; 20</button>
           <button className="btwn2030">20-30</button>
           <button className="plus30">30 &#60;</button>
-          <button className="any">
-            any
-          </button>
+          <button className="any">any</button>
         </div>
       </div>
 
@@ -51,6 +49,12 @@ const LogoutPage = () => {
           <div className="thursbox"> </div>
           <div className="fribox"> </div>
         </div>
+      </div>
+
+      <div className="utility-buttons">
+        <button className="previous-button"></button>
+        <button className="save-button"></button>
+        <button className="random-button"></button>
       </div>
     </div>
   );
