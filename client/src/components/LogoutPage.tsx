@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import "../styles/logoutpage.css";
 
 const LogoutPage = () => {
@@ -52,12 +52,12 @@ const LogoutPage = () => {
       </div>
 
       <div className="utility-buttons">
-        <button className="previous-button"></button>
-        <button className="save-button"></button>
-        <button className="random-button"></button>
+        <button className="previous-button">Previous</button>
+        <button className="save-button">Save</button>
+        <button className="random-button">Random</button>
       </div>
     </div>
   );
-}
+};
 
-export default LogoutPage
+export default LogoutPage;
