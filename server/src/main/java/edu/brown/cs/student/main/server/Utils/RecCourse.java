@@ -30,8 +30,8 @@ public class RecCourse {
     // find out how many courses we need to recommend
     int classesWanted = classTotal - count; // if
     // around what difficulty should each be
-//    System.out.println("score wanted: " + scoreWanted );
-//    System.out.println("classes wanted: "+ classesWanted);
+    //    System.out.println("score wanted: " + scoreWanted );
+    //    System.out.println("classes wanted: "+ classesWanted);
     Difficulty difficNeeded = Difficulty.getDifficulty(scoreWanted / classesWanted);
     System.out.println(difficNeeded);
 
@@ -52,7 +52,9 @@ public class RecCourse {
       if (classesWanted == 0) {
         break;
       }
-      if (Difficulty.getDifficulty(course.difficulty_score).toString().equals(difficNeeded.toString())) {
+      if (Difficulty.getDifficulty(course.difficulty_score)
+          .toString()
+          .equals(difficNeeded.toString())) {
         System.out.println(difficNeeded);
         System.out.println(Difficulty.getDifficulty(course.difficulty_score));
         toReturn.add(course);
