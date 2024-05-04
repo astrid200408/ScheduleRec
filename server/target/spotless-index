@@ -1,16 +1,17 @@
-pvDmG4pogAL5CaBNulD1DlbN5ED3pP4BGn5FJTM7xn4=
-src/main/java/edu/brown/cs/student/main/server/Exceptions/RecommendCourseException.java 2024-05-03T00:00:44.014285886Z
-src/main/java/edu/brown/cs/student/main/server/Server.java 2024-05-03T00:00:44.014551195Z
-src/main/java/edu/brown/cs/student/main/server/Utils/CalcDiffic.java 2024-05-03T00:00:44.015028054Z
-src/main/java/edu/brown/cs/student/main/server/Utils/CourseDatasource.java 2024-05-03T00:00:44.015201285Z
-src/main/java/edu/brown/cs/student/main/server/Utils/CourseObject.java 2024-05-03T00:00:44.015393165Z
-src/main/java/edu/brown/cs/student/main/server/Utils/Difficulty.java 2024-05-03T00:00:44.015549912Z
-src/main/java/edu/brown/cs/student/main/server/Utils/JSONParser.java 2024-05-03T00:00:44.015735480Z
-src/main/java/edu/brown/cs/student/main/server/Utils/RecCourse.java 2024-05-03T00:00:49.835696625Z
-src/main/java/edu/brown/cs/student/main/server/Utils/moshiAdapter.java 2024-05-03T00:00:44.016062711Z
-src/main/java/edu/brown/cs/student/main/server/handlers/AddCoursesHandler.java 2024-05-03T00:00:44.016412898Z
-src/main/java/edu/brown/cs/student/main/server/handlers/CalcDifficHandler.java 2024-05-03T00:00:44.016636037Z
-src/main/java/edu/brown/cs/student/main/server/handlers/GetCourseHandler.java 2024-05-03T00:00:44.017484453Z
-src/main/java/edu/brown/cs/student/main/server/handlers/RecCourseHandler.java 2024-05-03T00:00:44.019688227Z
-src/main/java/edu/brown/cs/student/main/server/storage/FirebaseUtilities.java 2024-05-03T00:00:44.020055569Z
-src/main/java/edu/brown/cs/student/main/server/storage/StorageInterface.java 2024-05-03T00:00:44.020228949Z
+0Bnje5ASdyE4hEkGWJLnZMVgLgsetPLGLKZg6tKFY0U=
+src\main\java\edu\brown\cs\student\main\server\Exceptions\RecommendCourseException.java 2024-04-25T04:40:05.940106600Z
+src\main\java\edu\brown\cs\student\main\server\handlers\AddCoursesHandler.java 2024-04-25T04:50:03.775202800Z
+src\main\java\edu\brown\cs\student\main\server\handlers\CalcDifficHandler.java 2024-04-25T05:05:42.577284400Z
+src\main\java\edu\brown\cs\student\main\server\handlers\GetCourseHandler.java 2024-04-29T23:41:14.836765700Z
+src\main\java\edu\brown\cs\student\main\server\handlers\GetDBCoursesHandler.java 2024-05-04T16:35:52.658124200Z
+src\main\java\edu\brown\cs\student\main\server\handlers\RecCourseHandler.java 2024-04-29T23:41:00.280922900Z
+src\main\java\edu\brown\cs\student\main\server\Server.java 2024-04-25T21:33:14.077042100Z
+src\main\java\edu\brown\cs\student\main\server\storage\FirebaseUtilities.java 2024-04-29T23:41:14.843453600Z
+src\main\java\edu\brown\cs\student\main\server\storage\StorageInterface.java 2024-04-25T04:46:42.451657800Z
+src\main\java\edu\brown\cs\student\main\server\Utils\CalcDiffic.java 2024-04-29T23:41:14.817411200Z
+src\main\java\edu\brown\cs\student\main\server\Utils\CourseDatasource.java 2024-04-25T04:39:25.587145200Z
+src\main\java\edu\brown\cs\student\main\server\Utils\CourseObject.java 2024-04-25T04:47:07.895301800Z
+src\main\java\edu\brown\cs\student\main\server\Utils\Difficulty.java 2024-04-29T23:41:14.821981400Z
+src\main\java\edu\brown\cs\student\main\server\Utils\JSONParser.java 2024-04-29T23:41:14.825994900Z
+src\main\java\edu\brown\cs\student\main\server\Utils\moshiAdapter.java 2024-04-25T04:48:46.580599700Z
+src\main\java\edu\brown\cs\student\main\server\Utils\RecCourse.java 2024-05-04T16:23:38.728083600Z
