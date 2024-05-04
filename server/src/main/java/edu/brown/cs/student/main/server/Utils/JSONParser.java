@@ -49,7 +49,7 @@ public class JSONParser {
       jsonReader.close();
 
       // ****************** CREATING THE ADAPTER **********
-      this.parsedJSON = this.fromJsonGeneral(fileString, CourseObject.class);
+      this.parsedJSON = fromJsonGeneral(fileString, CourseObject.class);
 
     } catch (IOException e) {
       System.out.println(e.getMessage());
@@ -63,6 +63,7 @@ public class JSONParser {
     for (CourseObject.Course course : compCourses) {
       System.out.println("Course Code: " + course.code);
       System.out.println("Course Name: " + course.name);
+      System.out.println(course.syllabus);
     }
 
     System.out.println("done");
