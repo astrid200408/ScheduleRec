@@ -11,6 +11,7 @@ src/main/java/edu/brown/cs/student/main/server/Utils/moshiAdapter.java 2024-05-0
 src/main/java/edu/brown/cs/student/main/server/handlers/AddCoursesHandler.java 2024-05-03T03:40:34.919141187Z
 src/main/java/edu/brown/cs/student/main/server/handlers/CalcDifficHandler.java 2024-05-03T03:40:34.919400198Z
 src/main/java/edu/brown/cs/student/main/server/handlers/GetCourseHandler.java 2024-05-03T03:40:34.919576822Z
+src/main/java/edu/brown/cs/student/main/server/handlers/GetDBCoursesHandler.java 2024-05-04T17:55:38.555346325Z
 src/main/java/edu/brown/cs/student/main/server/handlers/RecCourseHandler.java 2024-05-03T03:40:34.919771279Z
 src/main/java/edu/brown/cs/student/main/server/storage/FirebaseUtilities.java 2024-05-03T03:40:34.920286646Z
 src/main/java/edu/brown/cs/student/main/server/storage/StorageInterface.java 2024-05-03T03:40:34.920445360Z
