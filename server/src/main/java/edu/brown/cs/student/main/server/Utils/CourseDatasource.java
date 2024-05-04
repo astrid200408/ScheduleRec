@@ -19,4 +19,19 @@ public class CourseDatasource {
 
     return departmentCourses;
   }
+
+  /**
+   * Calculates difficulty score for each course and updates the CourseObject difficulty score field
+   *
+   * @param courseObject
+   * @return
+   */
+  public static void calcCourseDiffic(CourseObject courseObject) {
+    for (CourseObject.Course course : courseObject.courses) {
+
+      // feedback returns has avg hours, max hours
+      // coursework has list of components each with score including additional components
+
+    }
+  }
 }

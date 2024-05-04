@@ -31,6 +31,7 @@ public class Server {
       JSONParser courseCreator = new JSONParser();
       courseCreator.createCourses();
       CourseObject courseObject = courseCreator.getParsedJSON();
+      // here we can update our course object with our calculated scores method
       FirebaseUtilities utils = new FirebaseUtilities();
 
       // creating handlers here
