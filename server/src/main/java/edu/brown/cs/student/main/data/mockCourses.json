@@ -11,38 +11,689 @@
           ]
         }
       ],
-      "difficulty_score": 3,
+      "difficulty_score": 0,
+      "syllabus": [
+        {
+          "feedback": [
+            {
+              "avg": 12,
+              "max": 20
+            }
+          ],
+          "coursework": [
+            {
+              "assignments": [{ "num": 10, "avg": 1, "weight": 30 }],
+              "projects": [
+                {
+                  "num": 2,
+                  "avg": 5,
+                  "weight": 30
+                }
+              ],
+              "papers": [
+                {
+                  "num": 0,
+                  "avg": 0,
+                  "weight": 0
+                }
+              ],
+              "readings": [
+                {
+                  "num": 1,
+                  "avg": 1,
+                  "weight": 2
+                }
+              ],
+              "exams": [
+                {
+                  "num": 2,
+                  "avg": 10,
+                  "weight": 28
+                }
+              ],
+              "additional_component": "yes"
+            }
+          ]
+        }
+      ],
+      "professor": "John Smith",
+      "containsAdditionalComp": false
+    },
+
+    {
+      "code": "CHEM301",
+      "name": "Organic Chemistry",
+      "schedule": [
+        {
+          "days": ["Monday", "Wednesday"],
+          "timeSlots": [
+            {
+              "startHour": 10,
+              "startMinute": 0,
+              "endHour": 11,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 0,
+      "syllabus": [
+        {
+          "feedback": [
+            {
+              "avg": 16,
+              "max": 20
+            }
+          ],
+          "coursework": [
+            {
+              "assignments": [{ "num": 10, "avg": 3, "weight": 30 }],
+              "projects": [
+                {
+                  "num": 2,
+                  "avg": 10,
+                  "weight": 20
+                }
+              ],
+              "papers": [
+                {
+                  "num": 1,
+                  "avg": 15,
+                  "weight": 15
+                }
+              ],
+              "readings": [
+                {
+                  "num": 4,
+                  "avg": 2,
+                  "weight": 5
+                }
+              ],
+              "exams": [
+                {
+                  "num": 2,
+                  "avg": 18,
+                  "weight": 30
+                }
+              ],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Sarah Miller",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "PHYS440",
+      "name": "Theoretical Physics",
+      "schedule": [
+        {
+          "days": ["Tuesday", "Friday"],
+          "timeSlots": [
+            {
+              "startHour": 9,
+              "startMinute": 0,
+              "endHour": 10,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 0,
+      "syllabus": [
+        {
+          "feedback": [
+            {
+              "avg": 14,
+              "max": 20
+            }
+          ],
+          "coursework": [
+            {
+              "assignments": [{ "num": 5, "avg": 4, "weight": 20 }],
+              "projects": [
+                {
+                  "num": 1,
+                  "avg": 6,
+                  "weight": 30
+                }
+              ],
+              "papers": [
+                {
+                  "num": 3,
+                  "avg": 10,
+                  "weight": 25
+                }
+              ],
+              "readings": [
+                {
+                  "num": 3,
+                  "avg": 2,
+                  "weight": 5
+                }
+              ],
+              "exams": [
+                {
+                  "num": 1,
+                  "avg": 16,
+                  "weight": 20
+                }
+              ],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Mark Thompson",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "BIO210",
+      "name": "Cellular Biology",
+      "schedule": [
+        {
+          "days": ["Wednesday", "Friday"],
+          "timeSlots": [
+            {
+              "startHour": 11,
+              "startMinute": 0,
+              "endHour": 12,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 0,
+      "syllabus": [
+        {
+          "feedback": [
+            {
+              "avg": 17,
+              "max": 20
+            }
+          ],
+          "coursework": [
+            {
+              "assignments": [{ "num": 12, "avg": 2, "weight": 25 }],
+              "projects": [
+                {
+                  "num": 1,
+                  "avg": 9,
+                  "weight": 25
+                }
+              ],
+              "papers": [
+                {
+                  "num": 1,
+                  "avg": 14,
+                  "weight": 20
+                }
+              ],
+              "readings": [
+                {
+                  "num": 5,
+                  "avg": 1,
+                  "weight": 5
+                }
+              ],
+              "exams": [
+                {
+                  "num": 2,
+                  "avg": 14,
+                  "weight": 25
+                }
+              ],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Emily Johnson",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "HIST333",
+      "name": "Modern World History",
+      "schedule": [
+        {
+          "days": ["Monday", "Thursday"],
+          "timeSlots": [
+            {
+              "startHour": 14,
+              "startMinute": 0,
+              "endHour": 15,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 0,
+      "syllabus": [
+        {
+          "feedback": [
+            {
+              "avg": 15,
+              "max": 20
+            }
+          ],
+          "coursework": [
+            {
+              "assignments": [{ "num": 6, "avg": 3, "weight": 20 }],
+              "projects": [
+                {
+                  "num": 2,
+                  "avg": 7,
+                  "weight": 25
+                }
+              ],
+              "papers": [
+                {
+                  "num": 2,
+                  "avg": 13,
+                  "weight": 25
+                }
+              ],
+              "readings": [
+                {
+                  "num": 3,
+                  "avg": 2,
+                  "weight": 5
+                }
+              ],
+              "exams": [
+                {
+                  "num": 1,
+                  "avg": 15,
+                  "weight": 25
+                }
+              ],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
       "professor": "John Smith",
       "containsAdditionalComp": false
     },
     {
-      "code": "APMA9292",
-      "name": "Math",
+      "code": "ENG222",
+      "name": "English Literature",
       "schedule": [
         {
           "days": ["Tuesday", "Thursday"],
           "timeSlots": [
-            { "startHour": 10, "startMinute": 0, "endHour": 12, "endMinute": 0 }
+            {
+              "startHour": 10,
+              "startMinute": 0,
+              "endHour": 11,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 0,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 18, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 10, "avg": 2, "weight": 20 }],
+              "projects": [{ "num": 1, "avg": 8, "weight": 30 }],
+              "papers": [{ "num": 3, "avg": 12, "weight": 30 }],
+              "readings": [{ "num": 6, "avg": 1, "weight": 10 }],
+              "exams": [{ "num": 1, "avg": 17, "weight": 10 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Alice Johnson",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "BIO333",
+      "name": "Genetics",
+      "schedule": [
+        {
+          "days": ["Monday", "Wednesday"],
+          "timeSlots": [
+            {
+              "startHour": 13,
+              "startMinute": 0,
+              "endHour": 14,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 3,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 17, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 8, "avg": 3, "weight": 25 }],
+              "projects": [{ "num": 1, "avg": 10, "weight": 20 }],
+              "papers": [{ "num": 2, "avg": 14, "weight": 25 }],
+              "readings": [{ "num": 5, "avg": 2, "weight": 10 }],
+              "exams": [{ "num": 2, "avg": 16, "weight": 20 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Helen Grant",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "CHEM101",
+      "name": "Introductory Chemistry",
+      "schedule": [
+        {
+          "days": ["Tuesday", "Thursday"],
+          "timeSlots": [
+            { "startHour": 9, "startMinute": 0, "endHour": 10, "endMinute": 30 }
+          ]
+        }
+      ],
+      "difficulty_score": 2,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 15, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 12, "avg": 1, "weight": 15 }],
+              "projects": [{ "num": 1, "avg": 7, "weight": 35 }],
+              "papers": [{ "num": 1, "avg": 10, "weight": 20 }],
+              "readings": [{ "num": 3, "avg": 2, "weight": 5 }],
+              "exams": [{ "num": 2, "avg": 14, "weight": 25 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "George Eliot",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "HIST201",
+      "name": "European History",
+      "schedule": [
+        {
+          "days": ["Wednesday", "Friday"],
+          "timeSlots": [
+            {
+              "startHour": 11,
+              "startMinute": 0,
+              "endHour": 12,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 3,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 16, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 6, "avg": 3, "weight": 20 }],
+              "projects": [{ "num": 2, "avg": 9, "weight": 30 }],
+              "papers": [{ "num": 2, "avg": 11, "weight": 25 }],
+              "readings": [{ "num": 4, "avg": 1, "weight": 5 }],
+              "exams": [{ "num": 1, "avg": 15, "weight": 20 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Laura Bush",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "MATH340",
+      "name": "Linear Algebra",
+      "schedule": [
+        {
+          "days": ["Monday", "Wednesday"],
+          "timeSlots": [
+            {
+              "startHour": 15,
+              "startMinute": 0,
+              "endHour": 16,
+              "endMinute": 30
+            }
           ]
         }
       ],
       "difficulty_score": 4,
-      "professor": "Walt Whitman",
-      "containsAdditionalComp": true
-    },
-    {
-      "code": "MATH333",
-      "name": "Calculus",
-      "schedule": [
+      "syllabus": [
         {
-          "days": ["Monday", "Wednesday", "Friday"],
-          "timeSlots": [
-            { "startHour": 13, "startMinute": 30, "endHour": 15, "endMinute": 0 }
+          "feedback": [{ "avg": 18, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 10, "avg": 2, "weight": 25 }],
+              "projects": [{ "num": 1, "avg": 8, "weight": 25 }],
+              "papers": [{ "num": 1, "avg": 13, "weight": 20 }],
+              "readings": [{ "num": 2, "avg": 1, "weight": 5 }],
+              "exams": [{ "num": 2, "avg": 17, "weight": 25 }],
+              "additional_component": "no"
+            }
           ]
         }
       ],
-      "difficulty_score": 15,
-      "professor": "Brown",
+      "professor": "Sophia Carter",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "PHIL150",
+      "name": "Ethics in Modern Society",
+      "schedule": [
+        {
+          "days": ["Tuesday", "Thursday"],
+          "timeSlots": [
+            {
+              "startHour": 14,
+              "startMinute": 0,
+              "endHour": 15,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 1,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 17, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 7, "avg": 2, "weight": 15 }],
+              "projects": [{ "num": 1, "avg": 6, "weight": 30 }],
+              "papers": [{ "num": 3, "avg": 12, "weight": 35 }],
+              "readings": [{ "num": 5, "avg": 1, "weight": 10 }],
+              "exams": [{ "num": 1, "avg": 15, "weight": 10 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "James Parker",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "PSYC200",
+      "name": "Cognitive Psychology",
+      "schedule": [
+        {
+          "days": ["Monday", "Wednesday"],
+          "timeSlots": [
+            {
+              "startHour": 8,
+              "startMinute": 0,
+              "endHour": 9,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 3,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 17, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 8, "avg": 3, "weight": 20 }],
+              "projects": [{ "num": 1, "avg": 7, "weight": 25 }],
+              "papers": [{ "num": 2, "avg": 11, "weight": 25 }],
+              "readings": [{ "num": 6, "avg": 1, "weight": 10 }],
+              "exams": [{ "num": 1, "avg": 16, "weight": 20 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Margaret Reid",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "ECON310",
+      "name": "Macroeconomics",
+      "schedule": [
+        {
+          "days": ["Tuesday", "Thursday"],
+          "timeSlots": [
+            {
+              "startHour": 15,
+              "startMinute": 0,
+              "endHour": 16,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 4,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 16, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 10, "avg": 2, "weight": 20 }],
+              "projects": [{ "num": 1, "avg": 9, "weight": 30 }],
+              "papers": [{ "num": 1, "avg": 14, "weight": 20 }],
+              "readings": [{ "num": 4, "avg": 2, "weight": 5 }],
+              "exams": [{ "num": 2, "avg": 17, "weight": 25 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Howard Becker",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "ANTH104",
+      "name": "Cultural Anthropology",
+      "schedule": [
+        {
+          "days": ["Wednesday", "Friday"],
+          "timeSlots": [
+            {
+              "startHour": 14,
+              "startMinute": 0,
+              "endHour": 15,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 2,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 15, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 7, "avg": 2, "weight": 15 }],
+              "projects": [{ "num": 2, "avg": 8, "weight": 35 }],
+              "papers": [{ "num": 1, "avg": 12, "weight": 25 }],
+              "readings": [{ "num": 3, "avg": 1, "weight": 5 }],
+              "exams": [{ "num": 1, "avg": 15, "weight": 20 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Susan Lee",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "COMP150",
+      "name": "Introduction to Programming",
+      "schedule": [
+        {
+          "days": ["Tuesday", "Thursday"],
+          "timeSlots": [
+            {
+              "startHour": 9,
+              "startMinute": 0,
+              "endHour": 10,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 3,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 18, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 12, "avg": 1, "weight": 15 }],
+              "projects": [{ "num": 1, "avg": 10, "weight": 30 }],
+              "papers": [{ "num": 1, "avg": 10, "weight": 20 }],
+              "readings": [{ "num": 5, "avg": 2, "weight": 10 }],
+              "exams": [{ "num": 2, "avg": 17, "weight": 25 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Gregory Bates",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "ART155",
+      "name": "Modern Art History",
+      "schedule": [
+        {
+          "days": ["Monday", "Wednesday"],
+          "timeSlots": [
+            {
+              "startHour": 11,
+              "startMinute": 0,
+              "endHour": 12,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 1,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 17, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 5, "avg": 3, "weight": 20 }],
+              "projects": [{ "num": 2, "avg": 7, "weight": 25 }],
+              "papers": [{ "num": 3, "avg": 11, "weight": 30 }],
+              "readings": [{ "num": 7, "avg": 1, "weight": 10 }],
+              "exams": [{ "num": 1, "avg": 14, "weight": 15 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Emily Carson",
       "containsAdditionalComp": false
     }
   ]
