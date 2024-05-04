@@ -1,9 +1,9 @@
 agno9j8A2JewGQCRNtYQHG1YByZoPCWJfHhiTpQfmss=
 src/main/java/edu/brown/cs/student/main/server/Exceptions/RecommendCourseException.java 2024-04-26T19:30:52.076586796Z
-src/main/java/edu/brown/cs/student/main/server/Server.java 2024-05-04T17:13:57.099605766Z
+src/main/java/edu/brown/cs/student/main/server/Server.java 2024-05-04T17:25:32.335337303Z
 src/main/java/edu/brown/cs/student/main/server/Utils/CalcDiffic.java 2024-04-29T23:23:50.939867235Z
-src/main/java/edu/brown/cs/student/main/server/Utils/CourseDatasource.java 2024-05-04T17:19:58.017789247Z
-src/main/java/edu/brown/cs/student/main/server/Utils/CourseDifficCalc.java 2024-05-04T17:17:01.193995082Z
+src/main/java/edu/brown/cs/student/main/server/Utils/CourseDatasource.java 2024-05-04T17:25:32.335496552Z
+src/main/java/edu/brown/cs/student/main/server/Utils/CourseDifficCalc.java 2024-05-04T17:25:32.335817176Z
 src/main/java/edu/brown/cs/student/main/server/Utils/CourseObject.java 2024-04-26T19:30:52.077097299Z
 src/main/java/edu/brown/cs/student/main/server/Utils/Difficulty.java 2024-04-29T23:37:26.367798691Z
 src/main/java/edu/brown/cs/student/main/server/Utils/JSONParser.java 2024-04-26T20:00:59.114334845Z
