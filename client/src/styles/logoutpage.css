@@ -1,0 +1,185 @@
+.input-fields {
+  display: flex;
+  justify-content: space-between;
+  margin: 1%;
+}
+
+.include-div,
+.department-div {
+  display: flex;
+  align-items: center;
+  width: 48%;
+}
+
+.include-input,
+.department-input {
+  height: 100%;
+  width: 80%;
+  padding: 1em;
+  font-size: 0.75em;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  background-color: #d9d9d9;
+  color: #ff92a5;
+  caret-color: #ff92a5;
+}
+
+.include-button,
+.department-button {
+  height: 100%;
+  width: 20%;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #5f4343;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.include-input::placeholder,
+.department-input::placeholder {
+  font-size: 1.25em;
+  color: #818589;
+  font-weight: bold;
+}
+
+.include-input:focus,
+.department-input:focus {
+  outline: none;
+}
+
+.button-div {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2em;
+}
+
+.class-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.class-1,
+.class-2,
+.class-3,
+.class-4,
+.class-5 {
+  width: 3em;
+  height: 3em;
+  border: none;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  font-size: 1em;
+  font-weight: bolder;
+  color: #818589;
+  transition: background-color 0.3s ease;
+}
+
+.class-1:hover,
+.class-2:hover,
+.class-3:hover,
+.class-4:hover,
+.class-5:hover {
+  background-color: #b3b3b3;
+  cursor: pointer;
+}
+
+.hours-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.less20,
+.btwn2030,
+.plus30,
+.any {
+  border: none;
+  width: 4em;
+  height: 3em;
+  border-radius: 20px;
+  font-size: 1em;
+  font-weight: bolder;
+  background-color: #d9d9d9;
+  color: #818589;
+  transition: background-color 0.3s ease;
+}
+
+.less20:hover,
+.btwn2030:hover,
+.plus30:hover,
+.any:hover {
+  background-color: #b3b3b3;
+  cursor: pointer;
+}
+
+.schedule-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  width: 100%;
+}
+
+.back-rectangle {
+  display: flex;
+  width: 95%;
+  height: 50vh;
+  background-color: rgb(193, 87, 87);
+  border-radius: 5px;
+}
+
+.monbox,
+.wedbox,
+.fribox {
+  flex-grow: 1;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: #691c1c;
+}
+
+.tuesbox,
+.thursbox {
+  flex-grow: 1;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: #903939;
+}
+
+.monbox {
+  margin-left: 1%;
+}
+
+.fribox {
+  margin-right: 1%;
+}
+
+.utility-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 3%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.previous-button,
+.save-button,
+.random-button {
+  margin-right: 0;
+  margin-left: 0;
+  border: none;
+  width: 5em;
+  height: 3em;
+  border-radius: 20px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #818589;
+  background-color: #d9d9d9;
+  transition: background-color 0.3s ease;
+}
+
+.previous-button:hover,
+.save-button:hover,
+.random-button:hover {
+  background-color: #b3b3b3;
+  cursor: pointer;
+}
