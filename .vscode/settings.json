@@ -1,0 +1,8 @@
+{
+<<<<<<< HEAD
+  "java.compile.nullAnalysis.mode": "automatic"
+=======
+  "java.project.sourcePaths": ["backend/src"],
+  "java.project.referencedLibraries": []
+>>>>>>> 9dd84049b99ce6c2cfaf611597a1b03c8ada2d72
+}

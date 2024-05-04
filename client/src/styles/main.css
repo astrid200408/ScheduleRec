@@ -1,0 +1,66 @@
+/*
+  This styling is for main components
+*/
+
+.repl {
+  position: relative;
+  min-height: 65vh;
+}
+
+.repl-history {
+  height: max-content;
+  min-height: 40vh;
+  max-height: 50vh;
+  margin: auto;
+  display: block;
+  overflow: scroll;
+}
+
+.repl-input {
+  margin: auto;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 1;
+  bottom: 50px;
+  width: 90%;
+  background-color: white;
+  justify-content: center;
+}
+
+.repl-command-box {
+  width: 90%;
+  margin: auto;
+  display: block;
+}
+
+button {
+  margin: auto;
+  display: block;
+}
+
+.output {
+  padding: 2%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.result {
+  width: max-content;
+  border: 5px solid blue;
+  padding-top: 0px;
+  padding-right: 4px;
+  padding-bottom: 0px;
+  padding-left: 4px;
+  margin: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+table,
+th,
+td {
+  border: 1px solid;
+  margin: auto;
+}
