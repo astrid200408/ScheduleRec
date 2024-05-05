@@ -22,7 +22,7 @@ public class CalcDiffic {
       for (Course course : this.classes) {
         if (course.code.equals(courseCode)) {
           // add up difficulty score
-          currScore += course.difficulty_score;
+          currScore += course.difficultyScore;
         }
       }
     }
