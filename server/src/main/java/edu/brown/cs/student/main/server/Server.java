@@ -38,7 +38,7 @@ public class Server {
       FirebaseUtilities utils = new FirebaseUtilities();
 
       // creating handlers here
-      Spark.get("", new CalcDifficHandler(courseObject));
+      Spark.get("get-difficulty", new CalcDifficHandler(courseObject));
       Spark.get("add-courses", new AddCoursesHandler(utils));
       Spark.get("recommend-courses", new RecCourseHandler(courseObject));
       Spark.get("get-course-object", new GetCourseHandler(courseObject));

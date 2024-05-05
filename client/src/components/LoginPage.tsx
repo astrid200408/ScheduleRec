@@ -5,13 +5,15 @@ const imageLink = "https://media.istockphoto.com/id/1461182793/vector/cute-teddy
 const LoginPage = () => {
   return (
     <div className="login-page">
-      <p className='login-text'>
+      <p className="login-text">
         Login with your brown.edu email to access the Critical Schedule Maker!
       </p>
       <img
-        className='bear-image'
+        className="bear-image"
         src={imageLink}
         alt="Valentines Day Bear"
+        aria-label="valentines day bear"
+        aria-description="image of a teddy bear holding a heart for valentine's day"
       />
     </div>
   );

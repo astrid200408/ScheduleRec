@@ -35,6 +35,8 @@ const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
       <LoginPage />
       <button
         className="google-login-button"
+        aria-label="google authorization login button"
+        aria-description="button to login with Brown email to access application"
         onClick={() => signInWithGoogle()}
         disabled={props.authing}
       >
@@ -47,9 +49,11 @@ const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
 const Logout: React.FunctionComponent<ILoginPageProps> = (props) => {
   return (
     <div className="logout-box">
-      <LogoutPage/>
+      <LogoutPage />
       <button
         className="SignOut"
+        aria-label="sign out button"
+        aria-description="button to sign user out"
         onClick={() => {
           props.setAuthing(false);
         }}

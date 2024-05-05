@@ -57,6 +57,12 @@
   display: flex;
   gap: 20px;
   flex-wrap: nowrap;
+  align-items: center;
+}
+
+.classes-text {
+  color: black;
+  font-size: bolder;
 }
 
 .class-1,
@@ -87,6 +93,11 @@
 .hours-buttons {
   display: flex;
   gap: 20px;
+  align-items: center;
+}
+
+.hours-text {
+  color: black
 }
 
 .less20,
@@ -132,6 +143,7 @@
 .wedbox,
 .fribox {
   flex-grow: 1;
+  flex-shrink: 0;
   margin-top: 1%;
   margin-bottom: 1%;
   background-color: #691c1c;
@@ -140,6 +152,7 @@
 .tuesbox,
 .thursbox {
   flex-grow: 1;
+  flex-shrink: 0;
   margin-top: 1%;
   margin-bottom: 1%;
   background-color: #903939;
@@ -149,6 +162,9 @@
   margin-left: 1%;
 }
 
+.monPar {
+  margin-left: 1%;
+}
 .fribox {
   margin-right: 1%;
 }
@@ -163,6 +179,7 @@
 
 .previous-button,
 .save-button,
+.generate-button,
 .random-button {
   margin-right: 0;
   margin-left: 0;
@@ -179,6 +196,7 @@
 
 .previous-button:hover,
 .save-button:hover,
+.generate-button:hover,
 .random-button:hover {
   background-color: #b3b3b3;
   cursor: pointer;
