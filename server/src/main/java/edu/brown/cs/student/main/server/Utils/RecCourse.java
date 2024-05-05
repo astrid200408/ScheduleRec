@@ -52,11 +52,11 @@ public class RecCourse {
       if (classesWanted == 0) {
         break;
       }
-      if (Difficulty.getDifficulty(course.difficulty_score)
+      if (Difficulty.getDifficulty(course.difficultyScore)
           .toString()
           .equals(difficNeeded.toString())) {
         System.out.println(difficNeeded);
-        System.out.println(Difficulty.getDifficulty(course.difficulty_score));
+        System.out.println(Difficulty.getDifficulty(course.difficultyScore));
         toReturn.add(course);
         classesWanted -= 1;
       }
