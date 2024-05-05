@@ -31,24 +31,29 @@ public class GetDBCoursesHandler implements Route {
     try {
       String uid = request.queryParams("uid");
 
-      System.out.println("rendering pins for user: " + uid);
+      System.out.println("rendering classes for user: " + uid);
 
-      // get all the words for the user
-      List<Map<String, Object>> vals = this.storageHandler.getCollection(uid, "pins");
-      // convert the key,value map to just a list of the words.
-      List<String> latitude = vals.stream().map(pin -> pin.get("lat").toString()).toList();
-      List<String> longitude = vals.stream().map(pin -> pin.get("long").toString()).toList();
-      List<Map<String, Object>> pins = new ArrayList<>();
-      for (int i = 0; i < latitude.size(); i++) {
-        Map<String, Object> coord = new HashMap<String, Object>();
-        coord.put("latitude", latitude.get(i));
-        coord.put("longitude", longitude.get(i));
-        coord.put("key", i);
-        pins.add(coord);
+      // get all the courses
+      List<Map<String, Object>> vals = this.storageHandler.getCollection(uid, "courses");
+      List<String> class_one = getCoursesNum("one", vals);
+      List<String> class_two = getCoursesNum("two", vals);
+      List<String> class_three = getCoursesNum("three", vals);
+      List<String> class_four = getCoursesNum("four", vals);
+      List<String> class_five = getCoursesNum("five", vals);
+
+      List<Map<String, Object>> courses = new ArrayList<>();
+      for (int i = 0; i < class_one.size(); i++) {
+        Map<String, Object> sched = new HashMap<String, Object>();
+        sched.put("class_one", toPut(class_one, i));
+        sched.put("class_two", toPut(class_two, i));
+        sched.put("class_three", toPut(class_three, i));
+        sched.put("class_four", toPut(class_four, i));
+        sched.put("class_five", toPut(class_five, i));
+        courses.add(sched);
       }
 
       responseMap.put("response_type", "success");
-      responseMap.put("pins", pins);
+      responseMap.put("courses", courses);
 
     } catch (Exception e) {
       // error likely occurred in the storage handler
@@ -58,5 +63,25 @@ public class GetDBCoursesHandler implements Route {
     }
 
     return moshiAdapter.toMoshiJson(responseMap);
+  }
+
+  private String toPut(List<String> courseList, int index) {
+    String course;
+    try {
+      course = courseList.get(index);
+    } catch (Exception e) {
+      course = null;
+    }
+    return course;
+  }
+
+  private List<String> getCoursesNum(String course, List<Map<String, Object>> vals) {
+    List<String> courses;
+    try {
+      courses = vals.stream().map(pin -> pin.get(course).toString()).toList();
+    } catch (Exception e) {
+      courses = null;
+    }
+    return courses;
   }
 }
