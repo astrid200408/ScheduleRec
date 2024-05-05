@@ -5,6 +5,7 @@ geodata/*.geojson
 
 resources/
 target/
+spotless-index
 private/
 
 node_modules
