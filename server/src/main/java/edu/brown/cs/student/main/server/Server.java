@@ -7,6 +7,7 @@ import edu.brown.cs.student.main.server.Utils.JSONParser;
 import edu.brown.cs.student.main.server.handlers.AddCoursesHandler;
 import edu.brown.cs.student.main.server.handlers.CalcDifficHandler;
 import edu.brown.cs.student.main.server.handlers.GetCourseHandler;
+import edu.brown.cs.student.main.server.handlers.GetDBCoursesHandler;
 import edu.brown.cs.student.main.server.handlers.RecCourseHandler;
 import edu.brown.cs.student.main.server.storage.FirebaseUtilities;
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class Server {
       Spark.get("add-courses", new AddCoursesHandler(utils));
       Spark.get("recommend-courses", new RecCourseHandler(courseObject));
       Spark.get("get-course-object", new GetCourseHandler(courseObject));
+      Spark.get("get-saved-scheds", new GetDBCoursesHandler(utils));
 
       Spark.notFound(
           (request, response) -> {

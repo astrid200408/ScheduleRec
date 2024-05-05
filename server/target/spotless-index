@@ -3,9 +3,9 @@ src\main\java\edu\brown\cs\student\main\server\Exceptions\RecommendCourseExcepti
 src\main\java\edu\brown\cs\student\main\server\handlers\AddCoursesHandler.java 2024-04-25T04:50:03.775202800Z
 src\main\java\edu\brown\cs\student\main\server\handlers\CalcDifficHandler.java 2024-04-25T05:05:42.577284400Z
 src\main\java\edu\brown\cs\student\main\server\handlers\GetCourseHandler.java 2024-04-29T23:41:14.836765700Z
-src\main\java\edu\brown\cs\student\main\server\handlers\GetDBCoursesHandler.java 2024-05-04T16:35:52.658124200Z
+src\main\java\edu\brown\cs\student\main\server\handlers\GetDBCoursesHandler.java 2024-05-05T17:02:43.639520200Z
 src\main\java\edu\brown\cs\student\main\server\handlers\RecCourseHandler.java 2024-04-29T23:41:00.280922900Z
-src\main\java\edu\brown\cs\student\main\server\Server.java 2024-04-25T21:33:14.077042100Z
+src\main\java\edu\brown\cs\student\main\server\Server.java 2024-05-05T16:44:13.184976700Z
 src\main\java\edu\brown\cs\student\main\server\storage\FirebaseUtilities.java 2024-04-29T23:41:14.843453600Z
 src\main\java\edu\brown\cs\student\main\server\storage\StorageInterface.java 2024-04-25T04:46:42.451657800Z
 src\main\java\edu\brown\cs\student\main\server\Utils\CalcDiffic.java 2024-04-29T23:41:14.817411200Z

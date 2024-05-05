@@ -59,7 +59,6 @@
       "professor": "John Smith",
       "containsAdditionalComp": false
     },
-
     {
       "code": "CHEM301",
       "name": "Organic Chemistry",
@@ -125,7 +124,7 @@
       "containsAdditionalComp": false
     },
     {
-      "code": "PHYS440",
+      "code": "CLPS440",
       "name": "Theoretical Physics",
       "schedule": [
         {
@@ -189,7 +188,7 @@
       "containsAdditionalComp": false
     },
     {
-      "code": "BIO210",
+      "code": "BIOL210",
       "name": "Cellular Biology",
       "schedule": [
         {
@@ -317,7 +316,7 @@
       "containsAdditionalComp": false
     },
     {
-      "code": "ENG222",
+      "code": "ENGL222",
       "name": "English Literature",
       "schedule": [
         {
@@ -352,7 +351,7 @@
       "containsAdditionalComp": false
     },
     {
-      "code": "BIO333",
+      "code": "BIOL333",
       "name": "Genetics",
       "schedule": [
         {
@@ -522,7 +521,7 @@
       "containsAdditionalComp": false
     },
     {
-      "code": "PSYC200",
+      "code": "CLPS200",
       "name": "Cognitive Psychology",
       "schedule": [
         {
@@ -627,7 +626,7 @@
       "containsAdditionalComp": false
     },
     {
-      "code": "COMP150",
+      "code": "CSCI150",
       "name": "Introduction to Programming",
       "schedule": [
         {
@@ -662,7 +661,7 @@
       "containsAdditionalComp": false
     },
     {
-      "code": "ART155",
+      "code": "VISA155",
       "name": "Modern Art History",
       "schedule": [
         {
@@ -694,6 +693,181 @@
         }
       ],
       "professor": "Emily Carson",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "APMA202",
+      "name": "Statistical Methods",
+      "schedule": [
+        {
+          "days": ["Monday", "Wednesday"],
+          "timeSlots": [
+            {
+              "startHour": 13,
+              "startMinute": 0,
+              "endHour": 14,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 3,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 16, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 8, "avg": 2, "weight": 25 }],
+              "projects": [{ "num": 2, "avg": 8, "weight": 20 }],
+              "papers": [{ "num": 1, "avg": 12, "weight": 25 }],
+              "readings": [{ "num": 4, "avg": 1, "weight": 5 }],
+              "exams": [{ "num": 2, "avg": 16, "weight": 25 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Julian May",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "EEPS110",
+      "name": "Physical Geography",
+      "schedule": [
+        {
+          "days": ["Tuesday", "Thursday"],
+          "timeSlots": [
+            {
+              "startHour": 14,
+              "startMinute": 0,
+              "endHour": 15,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 2,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 15, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 10, "avg": 1, "weight": 15 }],
+              "projects": [{ "num": 1, "avg": 7, "weight": 35 }],
+              "papers": [{ "num": 2, "avg": 11, "weight": 20 }],
+              "readings": [{ "num": 3, "avg": 1, "weight": 5 }],
+              "exams": [{ "num": 2, "avg": 15, "weight": 25 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Anne Green",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "SOC105",
+      "name": "Introduction to Sociology",
+      "schedule": [
+        {
+          "days": ["Wednesday", "Friday"],
+          "timeSlots": [
+            {
+              "startHour": 11,
+              "startMinute": 0,
+              "endHour": 12,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 1,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 17, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 6, "avg": 3, "weight": 20 }],
+              "projects": [{ "num": 1, "avg": 9, "weight": 30 }],
+              "papers": [{ "num": 2, "avg": 13, "weight": 25 }],
+              "readings": [{ "num": 4, "avg": 2, "weight": 5 }],
+              "exams": [{ "num": 1, "avg": 16, "weight": 20 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Carl Brown",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "CLPS330",
+      "name": "Electromagnetism",
+      "schedule": [
+        {
+          "days": ["Monday", "Wednesday"],
+          "timeSlots": [
+            {
+              "startHour": 15,
+              "startMinute": 0,
+              "endHour": 16,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 4,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 18, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 12, "avg": 1, "weight": 15 }],
+              "projects": [{ "num": 1, "avg": 10, "weight": 30 }],
+              "papers": [{ "num": 1, "avg": 14, "weight": 20 }],
+              "readings": [{ "num": 5, "avg": 2, "weight": 10 }],
+              "exams": [{ "num": 2, "avg": 17, "weight": 25 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Micheal Evans",
+      "containsAdditionalComp": false
+    },
+    {
+      "code": "VISA250",
+      "name": "Contemporary Art Practices",
+      "schedule": [
+        {
+          "days": ["Tuesday", "Thursday"],
+          "timeSlots": [
+            {
+              "startHour": 10,
+              "startMinute": 0,
+              "endHour": 11,
+              "endMinute": 30
+            }
+          ]
+        }
+      ],
+      "difficulty_score": 1,
+      "syllabus": [
+        {
+          "feedback": [{ "avg": 17, "max": 20 }],
+          "coursework": [
+            {
+              "assignments": [{ "num": 5, "avg": 3, "weight": 20 }],
+              "projects": [{ "num": 2, "avg": 7, "weight": 25 }],
+              "papers": [{ "num": 3, "avg": 11, "weight": 30 }],
+              "readings": [{ "num": 7, "avg": 1, "weight": 10 }],
+              "exams": [{ "num": 1, "avg": 14, "weight": 15 }],
+              "additional_component": "no"
+            }
+          ]
+        }
+      ],
+      "professor": "Sophia Black",
       "containsAdditionalComp": false
     }
   ]
