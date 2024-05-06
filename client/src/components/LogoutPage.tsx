@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/logoutpage.css";
 import { ControlledInput } from "./ControlledInput";
 
 const LogoutPage = () => {
   const [includeCommandString, setIncludeCommandString] = useState<string>("");
   const [monString, setMonString] = useState<string>("");
+  const [classNum, setClassNum] = useState(0);
 
   const handleGenerate = (commandString: string) => {
     const [...args] = commandString.split(",");
@@ -21,6 +22,14 @@ const LogoutPage = () => {
   const changeColor = (button: HTMLButtonElement) => {
     button.style.backgroundColor = "818589";
   };
+
+  const handleClassClick = (number: number) => {
+    setClassNum(number);
+  };
+
+  useEffect(() => {
+    alert(classNum);
+  }, [classNum]);
 
   return (
     <div className="logout-page" aria-label="main page">
@@ -82,7 +91,7 @@ const LogoutPage = () => {
             id="1"
             aria-label="one class button"
             aria-description="button for selecting one class per semester"
-            // onClick={() => changeColor(document.getElementById)}
+            onClick={() => handleClassClick(1)}
           >
             1
           </button>
@@ -90,7 +99,7 @@ const LogoutPage = () => {
             className="class-2"
             aria-label="two classes button"
             aria-description="button for selecting two classes per semester"
-            onClick={handleClick}
+            onClick={() => handleClassClick(2)}
           >
             2
           </button>
@@ -98,7 +107,7 @@ const LogoutPage = () => {
             className="class-3"
             aria-label="three classes button"
             aria-description="button for selecting three classes per semester"
-            onClick={handleClick}
+            onClick={() => handleClassClick(3)}
           >
             3
           </button>
@@ -106,7 +115,7 @@ const LogoutPage = () => {
             className="class-4"
             aria-label="four classes button"
             aria-description="button for selecting four classes per semester"
-            onClick={handleClick}
+            onClick={() => handleClassClick(4)}
           >
             4
           </button>
@@ -114,7 +123,7 @@ const LogoutPage = () => {
             className="class-5"
             aria-label="five classes button"
             aria-description="button for selecting five classes per semester"
-            onClick={handleClick}
+            onClick={() => handleClassClick(5)}
           >
             5
           </button>
