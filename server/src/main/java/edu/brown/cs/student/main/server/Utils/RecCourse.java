@@ -19,25 +19,22 @@ public class RecCourse {
       int currSchedDiffic,
       String filter)
       throws RecommendCourseException {
-    int scoreWanted = Difficulty.fromString(schedDiffic).getDifficScore() - currSchedDiffic;
+
+    int count = (int) givenClasses.stream().filter(item -> item != null).count();
+    int scoreWanted = Difficulty.fromString(schedDiffic).getDifficScore() * count - currSchedDiffic;
 
     // if scoreWanted is neg, we know that the difficulty is already too high
     if (scoreWanted < 0) {
       throw new RecommendCourseException("Workload not possible with given classes");
     }
 
-    int count = (int) givenClasses.stream().filter(item -> item != null).count();
     // find out how many courses we need to recommend
     int classesWanted = classTotal - count; // if
-    // around what difficulty should each be
-    //    System.out.println("score wanted: " + scoreWanted );
-    //    System.out.println("classes wanted: "+ classesWanted);
+
     Difficulty difficNeeded = Difficulty.getDifficulty(scoreWanted / classesWanted);
-    System.out.println(difficNeeded);
 
     List<Course> filteredCourses = this.classes.courses;
     List<Course> toReturn = new ArrayList<>();
-    System.out.println(filteredCourses);
 
     // find courses that match this and any given filters
     if (filter != null) {
@@ -55,8 +52,6 @@ public class RecCourse {
       if (Difficulty.getDifficulty(course.difficultyScore)
           .toString()
           .equals(difficNeeded.toString())) {
-        System.out.println(difficNeeded);
-        System.out.println(Difficulty.getDifficulty(course.difficultyScore));
         toReturn.add(course);
         classesWanted -= 1;
       }

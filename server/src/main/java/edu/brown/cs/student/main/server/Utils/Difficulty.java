@@ -8,7 +8,7 @@ enum Difficulty {
   public int getDifficScore() {
     switch (this) {
       case LOW:
-        return 30;
+        return 20;
 
       case MEDIUM:
         return 50;
@@ -22,13 +22,13 @@ enum Difficulty {
   }
 
   public static Difficulty getDifficulty(int score) {
-    if (10 < score && score <= 30) {
+    if (0 <= score && score <= 20) {
       return LOW;
     }
-    if (30 < score && score <= 50) {
+    if (20 < score && score <= 50) {
       return MEDIUM;
     }
-    if (50 < score && score <= 70) {
+    if (50 < score) {
       return HIGH;
     }
     throw new IllegalArgumentException("Course doesn't have proper difficulty score");
