@@ -7,6 +7,7 @@ const LogoutPage = () => {
   const [includeCommandString, setIncludeCommandString] = useState<string>("");
   const [monString, setMonString] = useState<string>("");
   const [classNum, setClassNum] = useState(0);
+  const [diff, setDiff] = useState<string>("");
 
   const handleGenerate = (commandString: string) => {
     const [...args] = commandString.split(",");
@@ -16,8 +17,8 @@ const LogoutPage = () => {
     setIncludeCommandString(" ");
   };
 
-  const handleClick = () => {
-    alert("Button clicked!");
+  const handleDiffClick = (s : string) => {
+    setDiff(s);
   };
 
   const changeColor = (button: HTMLButtonElement) => {
@@ -28,6 +29,9 @@ const LogoutPage = () => {
     setClassNum(number);
   };
 
+  const handleClick = () => {
+    alert("smt");
+  }
   // useEffect(() => {
   //   alert(classNum);
   // }, [classNum]);
@@ -45,18 +49,20 @@ const LogoutPage = () => {
       prof: "PROF",
     };
 
-    const res = await fetch(
+    try {
+      const res = await fetch(
       "http://localhost:3232/recommend-courses?" +
-        "schedule-diffic-wanted=LOW" +
+        "schedule-diffic-wanted=" +
+          diff +
         "&class-amt-wanted=" +
          classNum +
         "&current-schedule-difficulty=0" +
         "&class_one=PHIL150"
-    );
+    ); 
     const res_list = [];
     const json1 = await res.json();
-    const result = json1.courses_recommended;    
-
+    const result = json1.courses_recommended;
+    
     for (var i = 0; i < result.length; i++) {
       const obj = result[i];
       const ex: Course = {
@@ -68,6 +74,11 @@ const LogoutPage = () => {
     }
     console.log(res_list);
     return res_list;
+
+    } catch {
+      alert("Courses Not Found")
+      return [];
+    } 
   }
 
   return (
@@ -169,38 +180,38 @@ const LogoutPage = () => {
         </div>
 
         <div className="hours-buttons">
-          <p className="hours-text">Hours per week:</p>
+          <p className="hours-text">Difficulty:</p>
           <button
             className="less20"
             aria-label="less than twenty hours button"
             aria-description="button for selecting less than twenty hours per week"
-            onClick={handleClick}
+            onClick={() => handleDiffClick("LOW")}
           >
-            &lt; 20
+            Low
           </button>
           <button
             className="btwn2030"
             aria-label="between twenty and thirty hours button"
             aria-description="button for selecting between twenty and thirty hours per week"
-            onClick={handleClick}
+            onClick={() => handleDiffClick("MED")}
           >
-            20-30
+            Med
           </button>
           <button
             className="plus30"
             aria-label="thirty plus hours button"
             aria-description="button for selecting thirty or more hours per week"
-            onClick={handleClick}
+            onClick={() => handleDiffClick("HIGH")}
           >
-            30 &#60;
+            Hard
           </button>
           <button
             className="any"
             aria-label="any amount of hours button"
             aria-description="button for selecting any amount of hours per week"
-            onClick={handleClick}
+            onClick={() => handleDiffClick("ANY")}
           >
-            any
+            Any
           </button>
         </div>
       </div>
