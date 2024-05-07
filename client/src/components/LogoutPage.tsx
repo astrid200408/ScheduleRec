@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/logoutpage.css";
 import { ControlledInput } from "./ControlledInput";
+import { log } from "console";
 
 const LogoutPage = () => {
   const [includeCommandString, setIncludeCommandString] = useState<string>("");
@@ -10,7 +11,8 @@ const LogoutPage = () => {
   const [wedString, setWedString] = useState<string>("");
   const [thursString, setThursString] = useState<string>("");
   const [friString, setFriString] = useState<string>("");
-  const [oneBool, setOneBool] = useState<boolean>(false);
+
+  const [classNum, setClassNum] = useState(0);
 
   const handleGenerate = (incString: string, deptString: string) => {
     const [...incArgs] = incString.split(",");
@@ -45,6 +47,52 @@ const LogoutPage = () => {
   const changeColor = (button: HTMLButtonElement) => {
     button.style.backgroundColor = "818589";
   };
+
+  const handleClassClick = (number: number) => {
+    setClassNum(number);
+  };
+
+  // useEffect(() => {
+  //   alert(classNum);
+  // }, [classNum]);
+
+  interface Course {
+    code: string;
+    name: string;
+    prof: string;
+  }
+
+  async function apiCall(): Promise<Array<Course>> {
+    const ex: Course = {
+      code: "CODE",
+      name: "NAME",
+      prof: "PROF",
+    };
+
+    const res = await fetch(
+      "http://localhost:3232/recommend-courses?" +
+        "schedule-diffic-wanted=LOW" +
+        "&class-amt-wanted=" +
+         classNum +
+        "&current-schedule-difficulty=0" +
+        "&class_one=PHIL150"
+    );
+    const res_list = [];
+    const json1 = await res.json();
+    const result = json1.courses_recommended;    
+
+    for (var i = 0; i < result.length; i++) {
+      const obj = result[i];
+      const ex: Course = {
+        code: obj.code,
+        name: obj.name,
+        prof: obj.professor,
+      };
+      res_list.push(ex);
+    }
+    console.log(res_list);
+    return res_list;
+  }
 
   return (
     <div className="logout-page" aria-label="main page">
@@ -115,7 +163,7 @@ const LogoutPage = () => {
             id="1"
             aria-label="one class button"
             aria-description="button for selecting one class per semester"
-            // onClick={() => changeBool(oneBool, setOneBool)}
+            onClick={() => handleClassClick(1)}
           >
             1
           </button>
@@ -123,7 +171,7 @@ const LogoutPage = () => {
             className="class-2"
             aria-label="two classes button"
             aria-description="button for selecting two classes per semester"
-            onClick={handleClick}
+            onClick={() => handleClassClick(2)}
           >
             2
           </button>
@@ -131,7 +179,7 @@ const LogoutPage = () => {
             className="class-3"
             aria-label="three classes button"
             aria-description="button for selecting three classes per semester"
-            onClick={handleClick}
+            onClick={() => handleClassClick(3)}
           >
             3
           </button>
@@ -139,7 +187,7 @@ const LogoutPage = () => {
             className="class-4"
             aria-label="four classes button"
             aria-description="button for selecting four classes per semester"
-            onClick={handleClick}
+            onClick={() => handleClassClick(4)}
           >
             4
           </button>
@@ -147,7 +195,7 @@ const LogoutPage = () => {
             className="class-5"
             aria-label="five classes button"
             aria-description="button for selecting five classes per semester"
-            onClick={handleClick}
+            onClick={() => handleClassClick(5)}
           >
             5
           </button>
@@ -256,9 +304,7 @@ const LogoutPage = () => {
           className="generate-button"
           aria-label="generate button"
           aria-description="button to generate a schedule based on input data"
-          onClick={() =>
-            handleGenerate(includeCommandString, deptCommandString)
-          }
+          onClick={() => apiCall()}
         >
           Generate
         </button>
