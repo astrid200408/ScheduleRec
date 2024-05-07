@@ -4,14 +4,29 @@ import { ControlledInput } from "./ControlledInput";
 
 const LogoutPage = () => {
   const [includeCommandString, setIncludeCommandString] = useState<string>("");
+  const [deptCommandString, setDeptCommandString] = useState<string>("");
   const [monString, setMonString] = useState<string>("");
+  const [tuesString, setTuesString] = useState<string>("");
+  const [wedString, setWedString] = useState<string>("");
+  const [thursString, setThursString] = useState<string>("");
+  const [friString, setFriString] = useState<string>("");
 
-  const handleGenerate = (commandString: string) => {
-    const [...args] = commandString.split(",");
-    var box = document.getElementById("monbox") as HTMLInputElement;
-    setMonString(args[0]);
-    // box.textContent = args[0];
+  const handleGenerate = (incString: string, deptString: string) => {
+    const [...incArgs] = incString.split(",");
+    const [...deptArgs] = deptString.split(",");
+    // var box = document.getElementById("monbox") as HTMLInputElement;
+    setMonString(incArgs[0]);
+    setTuesString(deptArgs[0]);
     setIncludeCommandString(" ");
+    setDeptCommandString(" ");
+  };
+  const handleRandom = (incString: string, deptString: string) => {
+    const [...incArgs] = incString.split(",");
+    const [...deptArgs] = deptString.split(",");
+    setMonString(incArgs[1]);
+    setTuesString(deptArgs[1]);
+    setIncludeCommandString(" ");
+    setDeptCommandString(" ");
   };
 
   const handleClick = () => {
@@ -60,13 +75,22 @@ const LogoutPage = () => {
           >
             Dept.
           </button>
+          <ControlledInput
+            value={deptCommandString}
+            setValue={setDeptCommandString}
+            ariaLabel="department input"
+            placeholder="Type like this: CSCI,ENGN,MATH"
+            ariaDescription="Type here to input desired departments. Input class codes separated by commas"
+            className="department-input"
+          />{" "}
+          {/*
           <input
             className="department-input"
             aria-label="department input"
             aria-description="Type here to input desired departments. Input course codes separated by commas"
             type="text"
             placeholder="Type something like this: CSCI,ENGN,MATH"
-          />
+          /> */}
         </div>
       </div>
 
@@ -169,24 +193,36 @@ const LogoutPage = () => {
           </div>
           <div
             className="tuesbox"
+            id="tuesbox"
             aria-label="tuesday box"
             aria-description="box containing Tuesday class"
-          ></div>
+          >
+            <p className="tuesPar">{tuesString}</p>
+          </div>
           <div
             className="wedbox"
+            id="wedbox"
             aria-label="wednesday box"
             aria-description="box containing Wednesday class"
-          ></div>
+          >
+            <p className="wedPar">{wedString}</p>
+          </div>
           <div
             className="thursbox"
+            id="thursbox"
             aria-label="thursday box"
             aria-description="box containing Thursday class"
-          ></div>
+          >
+            <p className="thursPar">{thursString}</p>
+          </div>
           <div
             className="fribox"
+            id="fribox"
             aria-label="friday box"
             aria-description="box containing Friday class"
-          ></div>
+          >
+            <p className="friPar">{friString}</p>
+          </div>
         </div>
       </div>
 
@@ -211,7 +247,9 @@ const LogoutPage = () => {
           className="generate-button"
           aria-label="generate button"
           aria-description="button to generate a schedule based on input data"
-          onClick={() => handleGenerate(includeCommandString)}
+          onClick={() =>
+            handleGenerate(includeCommandString, deptCommandString)
+          }
         >
           Generate
         </button>
@@ -219,7 +257,7 @@ const LogoutPage = () => {
           className="random-button"
           aria-label="random button"
           aria-description="button to randomly generate a schedule"
-          onClick={handleClick}
+          onClick={() => handleRandom(includeCommandString, deptCommandString)}
         >
           Random
         </button>
