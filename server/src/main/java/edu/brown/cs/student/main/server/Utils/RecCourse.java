@@ -33,11 +33,11 @@ public class RecCourse {
     //    System.out.println("score wanted: " + scoreWanted );
     //    System.out.println("classes wanted: "+ classesWanted);
     Difficulty difficNeeded = Difficulty.getDifficulty(scoreWanted / classesWanted);
-    System.out.println(difficNeeded);
+    // System.out.println(difficNeeded);
 
     List<Course> filteredCourses = this.classes.courses;
     List<Course> toReturn = new ArrayList<>();
-    System.out.println(filteredCourses);
+    System.out.println("filtered courses: " + filteredCourses);
 
     // find courses that match this and any given filters
     if (filter != null) {
@@ -46,6 +46,7 @@ public class RecCourse {
 
     // randomize list of courses
     Collections.shuffle(filteredCourses);
+    System.out.println(filteredCourses.size());
 
     // grab needed courses
     for (Course course : filteredCourses) {
@@ -55,7 +56,7 @@ public class RecCourse {
       if (Difficulty.getDifficulty(course.difficultyScore)
           .toString()
           .equals(difficNeeded.toString())) {
-        System.out.println(difficNeeded);
+        //        System.out.println(difficNeeded);
         System.out.println(Difficulty.getDifficulty(course.difficultyScore));
         toReturn.add(course);
         classesWanted -= 1;
