@@ -10,6 +10,7 @@ const LogoutPage = () => {
   const [wedString, setWedString] = useState<string>("");
   const [thursString, setThursString] = useState<string>("");
   const [friString, setFriString] = useState<string>("");
+  const [oneBool, setOneBool] = useState<boolean>(false);
 
   const handleGenerate = (incString: string, deptString: string) => {
     const [...incArgs] = incString.split(",");
@@ -28,6 +29,14 @@ const LogoutPage = () => {
     setIncludeCommandString(" ");
     setDeptCommandString(" ");
   };
+  // const changeBool = (buttonBool: boolean, setButtonBool: React.Dispatch<React.SetStateAction<boolean>>) => {
+  //   if (buttonBool == true) {
+  //     setButtonBool(false);
+  //   }
+  //   else {
+  //     setButtonBool(true);
+  //   }
+  // };
 
   const handleClick = () => {
     alert("Button clicked!");
@@ -106,7 +115,7 @@ const LogoutPage = () => {
             id="1"
             aria-label="one class button"
             aria-description="button for selecting one class per semester"
-            // onClick={() => changeColor(document.getElementById)}
+            // onClick={() => changeBool(oneBool, setOneBool)}
           >
             1
           </button>
