@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/logoutpage.css";
 import { ControlledInput } from "./ControlledInput";
+import { log } from "console";
 
 const LogoutPage = () => {
   const [includeCommandString, setIncludeCommandString] = useState<string>("");
@@ -37,7 +38,7 @@ const LogoutPage = () => {
     prof: string;
   }
 
-  async function apiCall(): Promise<Course> {
+  async function apiCall(): Promise<Array<Course>> {
     const ex: Course = {
       code: "CODE",
       name: "NAME",
@@ -48,15 +49,25 @@ const LogoutPage = () => {
       "http://localhost:3232/recommend-courses?" +
         "schedule-diffic-wanted=LOW" +
         "&class-amt-wanted=" +
-        { classNum } +
+         classNum +
         "&current-schedule-difficulty=0" +
         "&class_one=PHIL150"
     );
+    const res_list = [];
     const json1 = await res.json();
-    const result = json1.courses_recommended;
-    const firstObj = result[0]
-    console.log(firstObj);
-    return ex;
+    const result = json1.courses_recommended;    
+
+    for (var i = 0; i < result.length; i++) {
+      const obj = result[i];
+      const ex: Course = {
+        code: obj.code,
+        name: obj.name,
+        prof: obj.professor,
+      };
+      res_list.push(ex);
+    }
+    console.log(res_list);
+    return res_list;
   }
 
   return (
