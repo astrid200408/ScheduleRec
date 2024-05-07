@@ -27,9 +27,37 @@ const LogoutPage = () => {
     setClassNum(number);
   };
 
-  useEffect(() => {
-    alert(classNum);
-  }, [classNum]);
+  // useEffect(() => {
+  //   alert(classNum);
+  // }, [classNum]);
+
+  interface Course {
+    code: string;
+    name: string;
+    prof: string;
+  }
+
+  async function apiCall(): Promise<Course> {
+    const ex: Course = {
+      code: "CODE",
+      name: "NAME",
+      prof: "PROF",
+    };
+
+    const res = await fetch(
+      "http://localhost:3232/recommend-courses?" +
+        "schedule-diffic-wanted=LOW" +
+        "&class-amt-wanted=" +
+        { classNum } +
+        "&current-schedule-difficulty=0" +
+        "&class_one=PHIL150"
+    );
+    const json1 = await res.json();
+    const result = json1.courses_recommended;
+    const firstObj = result[0]
+    console.log(firstObj);
+    return ex;
+  }
 
   return (
     <div className="logout-page" aria-label="main page">
@@ -220,7 +248,7 @@ const LogoutPage = () => {
           className="generate-button"
           aria-label="generate button"
           aria-description="button to generate a schedule based on input data"
-          onClick={() => handleGenerate(includeCommandString)}
+          onClick={() => apiCall()}
         >
           Generate
         </button>
