@@ -22,9 +22,9 @@ public class RecCourseHandler implements Route {
     // get params needed : current courseload difficulty, current classes in sched, how many total
     // courses wanted, wanted
     // courseload difficulty
-    int currSchedDiffic = Integer.parseInt(request.queryParams("current-schedule-difficulty"));
-    int classTotal = Integer.parseInt(request.queryParams("class-amt-wanted"));
-    String schedDiffic = request.queryParams("schedule-diffic-wanted");
+    int currSchedDiffic = Integer.parseInt(request.queryParams("current_schedule_difficulty"));
+    int classTotal = Integer.parseInt(request.queryParams("class_amt_wanted"));
+    String schedDiffic = request.queryParams("schedule_diffic_wanted");
     String class1 = request.queryParams("class_one");
     String class2 = request.queryParams("class_two");
     String class3 = request.queryParams("class_three");

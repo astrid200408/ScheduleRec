@@ -1,5 +1,10 @@
 import React from "react";
 
+/*
+Class that contains the html elements for the buttons to select how many 
+classes the user would like to take
+*/
+
 interface NumClassButtonInterface {
     setClassNum: React.Dispatch<React.SetStateAction<number>>;
 }

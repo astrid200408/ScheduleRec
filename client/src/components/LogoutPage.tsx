@@ -2,61 +2,86 @@ import React, { useEffect, useState } from "react";
 import "../styles/logoutpage.css";
 import { ControlledInput } from "./ControlledInput";
 import { NOMEM } from "dns";
-import NumClassButton from "./NumClassButton";
+import {
+  courseRecCall,
+  curr_Sched,
+  curr_sched_diffic,
+  recCourseCall,
+} from "./utils/api";
+import NumClassButton from "./buttons/NumClassButton";
+import ClassHoursButton from "./buttons/ClassHoursButton";
+import Schedule from "./buttons/Schedule";
 
 const LogoutPage = () => {
   const [includeCommandString, setIncludeCommandString] = useState<string>("");
-  const [monString, setMonString] = useState<string>("");
-  const [classNum, setClassNum] = useState(0);
+  const [deptCommandString, setDeptCommandString] = useState<string>("");
 
-  const handleGenerate = (commandString: string) => {
-    const [...args] = commandString.split(",");
-    var box = document.getElementById("monbox") as HTMLInputElement;
-    setMonString(args[0]);
-    // box.textContent = args[0];
+  const [monString, setMonString] = useState<string>("");
+  const [tuesString, setTuesString] = useState<string>("");
+  const [wedString, setWedString] = useState<string>("");
+  const [thursString, setThursString] = useState<string>("");
+  const [friString, setFriString] = useState<string>("");
+
+  const [classesIncluded, setClassesIncluded] = useState<string[]>([]);
+  const [deptIncluded, setDeptIncluded] = useState<string[]>([]);
+
+  const [classNum, setClassNum] = useState(0);
+  const [classHours, setClassHours] = useState<string>("");
+
+  const handleGenerate = (incString: string, deptString: string) => {
+    const split = incString.split(",");
+    setClassesIncluded(split);
+    let copy = ["N", "N", "N", "N", "N"];
+    console.log(classesIncluded);
+    for (let i = 0; i < split.length; i++) {
+      copy[i] = split[i];
+    }
+    setClassesIncluded(copy);
+    console.log(copy);
+
+    setDeptIncluded(deptString.split(","));
+    setMonString(classesIncluded[0]);
+    setTuesString(deptIncluded[0]);
     setIncludeCommandString(" ");
+    setDeptCommandString(" ");
+
+    const listCourses = getRecCourses();
+    console.log(listCourses);
   };
 
   const handleClick = () => {
     alert("Button clicked!");
   };
 
-  const changeColor = (button: HTMLButtonElement) => {
-    button.style.backgroundColor = "818589";
-  };
-
-
-
-  // useEffect(() => {
-  //   alert(classNum);
-  // }, [classNum]);
-
-  interface Course {
-    code: string;
-    name: string;
-    prof: string;
-  }
-
-  async function apiCall(): Promise<Course> {
-    const ex: Course = {
-      code: "CODE",
-      name: "NAME",
-      prof: "PROF",
+  async function getRecCourses() {
+    //current schedule so far
+    const sched: curr_Sched = {
+      class_one: classesIncluded[0],
+      class_two: classesIncluded[1],
+      class_three: classesIncluded[2],
+      class_four: classesIncluded[3],
+      class_five: classesIncluded[4],
     };
+    //find difficulty from current schedule
+    const callDiffic = await curr_sched_diffic(sched);
+    const diffic = callDiffic.schedule_difficulty;
 
-    const res = await fetch(
-      "http://localhost:3232/recommend-courses?" +
-        "schedule-diffic-wanted=LOW" +
-        "&class-amt-wanted=" +
-        { classNum } +
-        "&current-schedule-difficulty=0" +
-        "&class_one=PHIL150"
-    );
-    const json1 = await res.json();
-    const result = json1.courses_recommended;
-    const firstObj = result[0];
-    console.log(firstObj);
-    return ex;
+    //Recommender class info
+    const recCallProps: recCourseCall = {
+      sched_diffic_wanted: classHours,
+      class_amt_wanted: classNum.toString(),
+      class_one: classesIncluded[0],
+      class_two: classesIncluded[1],
+      class_three: classesIncluded[2],
+      class_four: classesIncluded[3],
+      class_five: classesIncluded[4],
+      current_schedule_difficulty: diffic,
+    };
+    //grab recommendations
+    const recommendedCourses = await courseRecCall(recCallProps);
+
+    //return recommended courses
+    return recommendedCourses.courses_recommended;
   }
 
   return (
@@ -70,20 +95,11 @@ const LogoutPage = () => {
           >
             Include
           </button>
-          {/* <input
-          
-            className="include-input"
-            aria-label="include input"
-            aria-description="Type here to input desired classes. Input class codes separated by commas"
-            type="text"
-            id="include-id"
-            placeholder="Type like this: csci1800,csci111,csci200"
-          /> */}
           <ControlledInput
             value={includeCommandString}
             setValue={setIncludeCommandString}
             ariaLabel="include input"
-            placeholder="Type like this: csci1800,csci111,csci200"
+            placeholder="Type like this: CSCI0180,CSCI0111,CSCI0200"
             ariaDescription="Type here to input desired classes. Input class codes separated by commas"
             className="include-input"
           />
@@ -97,86 +113,30 @@ const LogoutPage = () => {
           >
             Dept.
           </button>
-          <input
+          <ControlledInput
+            value={deptCommandString}
+            setValue={setDeptCommandString}
+            ariaLabel="department input"
+            placeholder="Type like this: CSCI,ENGN,MATH"
+            ariaDescription="Type here to input desired departments. Input class codes separated by commas"
             className="department-input"
-            aria-label="department input"
-            aria-description="Type here to input desired departments. Input course codes separated by commas"
-            type="text"
-            placeholder="Type something like this: CSCI,ENGN,MATH"
-          />
+          />{" "}
         </div>
       </div>
 
       <div className="button-div">
         <NumClassButton setClassNum={setClassNum} />
-        <div className="hours-buttons">
-          <p className="hours-text">Hours per week:</p>
-          <button
-            className="less20"
-            aria-label="less than twenty hours button"
-            aria-description="button for selecting less than twenty hours per week"
-            onClick={handleClick}
-          >
-            &lt; 20
-          </button>
-          <button
-            className="btwn2030"
-            aria-label="between twenty and thirty hours button"
-            aria-description="button for selecting between twenty and thirty hours per week"
-            onClick={handleClick}
-          >
-            20-30
-          </button>
-          <button
-            className="plus30"
-            aria-label="thirty plus hours button"
-            aria-description="button for selecting thirty or more hours per week"
-            onClick={handleClick}
-          >
-            30 &#60;
-          </button>
-          <button
-            className="any"
-            aria-label="any amount of hours button"
-            aria-description="button for selecting any amount of hours per week"
-            onClick={handleClick}
-          >
-            any
-          </button>
-        </div>
+        <ClassHoursButton setClassHours={setClassHours} />
       </div>
 
       <div className="schedule-div">
-        <div className="back-rectangle">
-          <div
-            className="monbox"
-            id="monbox"
-            aria-label="monday box"
-            aria-description="box containing Monday class"
-          >
-            <p className="monPar">{monString}</p>
-          </div>
-          <div
-            className="tuesbox"
-            aria-label="tuesday box"
-            aria-description="box containing Tuesday class"
-          ></div>
-          <div
-            className="wedbox"
-            aria-label="wednesday box"
-            aria-description="box containing Wednesday class"
-          ></div>
-          <div
-            className="thursbox"
-            aria-label="thursday box"
-            aria-description="box containing Thursday class"
-          ></div>
-          <div
-            className="fribox"
-            aria-label="friday box"
-            aria-description="box containing Friday class"
-          ></div>
-        </div>
+        <Schedule
+          mString={monString}
+          tuString={tuesString}
+          wString={wedString}
+          thString={thursString}
+          fString={friString}
+        />
       </div>
 
       <div className="utility-buttons">
@@ -200,7 +160,9 @@ const LogoutPage = () => {
           className="generate-button"
           aria-label="generate button"
           aria-description="button to generate a schedule based on input data"
-          onClick={() => apiCall()}
+          onClick={() =>
+            handleGenerate(includeCommandString, deptCommandString)
+          }
         >
           Generate
         </button>
