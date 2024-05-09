@@ -23,7 +23,7 @@ public class RecCourse {
     int count =
         (int) givenClasses.stream().filter(item -> item != null && !item.equals("N")).count();
     int classesWanted = classTotal - count;
-    if(classesWanted <= 0){
+    if (classesWanted <= 0) {
       throw new RecommendCourseException("no room left to add classes in schedule");
     }
 
