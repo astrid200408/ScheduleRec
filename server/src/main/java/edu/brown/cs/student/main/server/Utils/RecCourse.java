@@ -1,5 +1,6 @@
 package edu.brown.cs.student.main.server.Utils;
 
+import edu.brown.cs.student.main.server.Exceptions.CourseDatasourceException;
 import edu.brown.cs.student.main.server.Exceptions.RecommendCourseException;
 import edu.brown.cs.student.main.server.Utils.CourseObject.Course;
 import java.util.*;
@@ -18,7 +19,7 @@ public class RecCourse {
       int classTotal,
       int currSchedDiffic,
       String filter)
-      throws RecommendCourseException {
+      throws RecommendCourseException, CourseDatasourceException {
 
     int count =
         (int) givenClasses.stream().filter(item -> item != null && !item.equals("N")).count();
@@ -48,7 +49,9 @@ public class RecCourse {
     List<Course> toReturn = new ArrayList<>();
 
     // find courses that match this and any given filters
-    if (filter != null) {
+    System.out.println(filter);
+    if (filter != null && !filter.equals("N")) {
+
       filteredCourses = CourseDatasource.getCoursesByDepartment(this.classes, filter);
     }
 

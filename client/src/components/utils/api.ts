@@ -13,6 +13,7 @@ export interface recCourseCall {
   sched_diffic_wanted: string;
   class_amt_wanted: string;
   current_schedule_difficulty: string;
+  filter: string
   class_one: string;
   class_two: string;
   class_three: string;
@@ -49,6 +50,7 @@ export async function courseRecCall(courseCall: recCourseCall) {
     schedule_diffic_wanted: courseCall.sched_diffic_wanted,
     class_amt_wanted: courseCall.class_amt_wanted,
     current_schedule_difficulty: courseCall.current_schedule_difficulty,
+    filter: courseCall.filter,
     class_one: courseCall.class_one,
     class_two: courseCall.class_two,
     class_three: courseCall.class_three,

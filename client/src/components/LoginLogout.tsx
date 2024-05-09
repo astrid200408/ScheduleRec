@@ -2,10 +2,12 @@ import React from "react";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import LoginPage from "./LoginPage";
 import LogoutPage from "./LogoutPage";
+import { addLoginCookie } from "./utils/cookie";
 
 export interface ILoginPageProps {
   authing: boolean;
   setAuthing: React.Dispatch<React.SetStateAction<boolean>>;
+  gatedContent: React.ReactNode;
 }
 
 const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
@@ -19,6 +21,7 @@ const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
       // Check if the email ends with the allowed domain
       if (userEmail.endsWith("@brown.edu")) {
         console.log(response.user.uid);
+        addLoginCookie(response.user.uid);
         props.setAuthing(true);
       } else {
         // User is not allowed, sign them out and show a message
@@ -49,7 +52,7 @@ const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
 const Logout: React.FunctionComponent<ILoginPageProps> = (props) => {
   return (
     <div className="logout-box">
-      <LogoutPage />
+      {props.gatedContent}
       <button
         className="SignOut"
         aria-label="sign out button"

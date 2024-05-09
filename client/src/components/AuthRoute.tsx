@@ -1,20 +1,22 @@
 import { useState } from "react";
 import LoginLogout from "./LoginLogout";
-import LogoutPage from "./LogoutPage";
+import { getLoginCookie } from "./utils/cookie";
 
-function AuthRoute() {
-  const [authing, setAuthing] = useState(false);
+interface AuthRouteProps {
+  gatedContent: React.ReactNode;
+}
 
-  // USEFUL FOR PLAYWRIGHT TESTING PURPOSES: auto sets authing to true in test environment
-  if (!authing && import.meta.env.VITE_APP_NODE_ENV === "test") {
-    setAuthing(true);
+function AuthRoute(props: AuthRouteProps) {
+  const [loggedIn, setLogin] = useState(false);
+
+  // SKIP THE LOGIN BUTTON IF YOU HAVE ALREADY LOGGED IN.
+  if (!loggedIn && getLoginCookie() !== undefined) {
+    setLogin(true);
   }
 
   return (
     <>
-      {/* {authing ? <LogoutPage /> : null} */}
-      {/* change true to authing later */}
-      <LoginLogout authing={true} setAuthing={setAuthing} />
+      <LoginLogout authing={loggedIn} setAuthing={setLogin} gatedContent={props.gatedContent} />
     </>
   );
 }
