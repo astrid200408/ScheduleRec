@@ -80,6 +80,7 @@ public class CalcDifficTests {
     }
 
 
+    //test one classes
     @Test
     public void testOneClassDiffic() throws IOException {
         HttpURLConnection connection = tryRequest("/get-difficulty?class_one=CSCI111");
@@ -94,9 +95,68 @@ public class CalcDifficTests {
         connection.disconnect();
     }
 
+    //test no classes
+    @Test
+    public void testNoClassDiffic() throws IOException {
+        HttpURLConnection connection = tryRequest("/get-difficulty?");
 
+        assertEquals(200, connection.getResponseCode());
 
+        Map<String, Object> responseBody =
+                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
 
+        assertEquals(0.0, responseBody.get("schedule_difficulty"));
+
+        connection.disconnect();
+    }
+
+    //test 4 classes
+    @Test
+    public void testFourClassDiffic() throws IOException {
+        HttpURLConnection connection = tryRequest("/get-difficulty?class_one=CSCI111&class_two=HIST333"+
+                "&class_three=CSCI150&class_four=CLPS330");
+
+        assertEquals(200, connection.getResponseCode());
+
+        Map<String, Object> responseBody =
+                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+
+        assertEquals(54.0, responseBody.get("schedule_difficulty"));
+
+        connection.disconnect();
+    }
+
+    //test 5 classes
+    @Test
+    public void testFiveClassDiffic() throws IOException {
+        HttpURLConnection connection = tryRequest("/get-difficulty?class_one=CSCI111&class_two=HIST333"+
+                "&class_three=CSCI150&class_four=CLPS330&class_five=VISA250");
+
+        assertEquals(200, connection.getResponseCode());
+
+        Map<String, Object> responseBody =
+                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+
+        assertEquals(85.0, responseBody.get("schedule_difficulty"));
+
+        connection.disconnect();
+    }
+
+    //test 6 classes
+    @Test
+    public void testSixClassDiffic() throws IOException {
+        HttpURLConnection connection = tryRequest("/get-difficulty?class_one=CSCI111&class_two=HIST333"+
+                "&class_three=CSCI150&class_four=CLPS330&class_five=VISA250&class_six=SOC105");
+
+        assertEquals(200, connection.getResponseCode());
+
+        Map<String, Object> responseBody =
+                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+
+        assertEquals(85.0, responseBody.get("schedule_difficulty"));
+
+        connection.disconnect();
+    }
 
 
 }
