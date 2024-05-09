@@ -1,3 +1,4 @@
+import { get } from "https";
 import { getLoginCookie } from "./cookie";
 
 const HOST = "http://localhost:3232";
@@ -69,5 +70,22 @@ export async function curr_sched_diffic(curr_sched: curr_Sched) {
 export async function getCourse(course: string) {
   return await queryAPI("get-course-object", {
     class_code: course,
+  });
+}
+
+export async function saveSched(curr_sched: curr_Sched) {
+  return await queryAPI("add-courses", {
+    uid: getLoginCookie() || "",
+    class_one: curr_sched.class_one,
+    class_two: curr_sched.class_two,
+    class_three: curr_sched.class_three,
+    class_four: curr_sched.class_four,
+    class_five: curr_sched.class_five,
+  });
+}
+
+export async function getSavedScheds() {
+  return await queryAPI("get-saved-scheds", {
+    uid: getLoginCookie() || "",
   });
 }
