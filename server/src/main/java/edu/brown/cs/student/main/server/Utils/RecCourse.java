@@ -76,6 +76,7 @@ public class RecCourse {
       }
     }
 
+    System.out.println(toReturn.toString());
     return toReturn;
   }
 }

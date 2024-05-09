@@ -3,12 +3,12 @@ import { getLoginCookie } from "./cookie";
 const HOST = "http://localhost:3232";
 
 interface Course {
-    code: string;
-    name: string;
-    prof: string;
+  code: string;
+  name: string;
+  prof: string;
 }
 
-export interface recCourseCall{
+export interface recCourseCall {
   sched_diffic_wanted: string;
   class_amt_wanted: string;
   current_schedule_difficulty: string;
@@ -26,7 +26,7 @@ export interface curr_Sched {
   class_four: string;
   class_five: string;
 }
-  
+
 async function queryAPI(
   endpoint: string,
   query_params: Record<string, string>
@@ -39,12 +39,13 @@ async function queryAPI(
   if (!response.ok) {
     console.error(response.status, response.statusText);
   }
+  console.log(response);
   return response.json();
 }
 
 export async function courseRecCall(courseCall: recCourseCall) {
   return await queryAPI("recommend-courses", {
-    sched_diffic_wanted: courseCall.sched_diffic_wanted,
+    schedule_diffic_wanted: courseCall.sched_diffic_wanted,
     class_amt_wanted: courseCall.class_amt_wanted,
     current_schedule_difficulty: courseCall.current_schedule_difficulty,
     class_one: courseCall.class_one,

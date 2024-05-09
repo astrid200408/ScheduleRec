@@ -6,11 +6,9 @@ classes the user would like to take
 */
 
 interface NumClassButtonInterface {
-    setClassNum: React.Dispatch<React.SetStateAction<number>>;
+  setClassNum: React.Dispatch<React.SetStateAction<number>>;
 }
-export default function NumClassButton(
-  props:NumClassButtonInterface
-) {
+export default function NumClassButton(props: NumClassButtonInterface) {
   const handleClassClick = (number: number) => {
     props.setClassNum(number);
   };
@@ -23,8 +21,8 @@ export default function NumClassButton(
       <p className="classes-text">Number of Classes:</p>
       <button
         className="class-1"
-        id="1"
-        aria-label="one class button"
+        id="one_class_button"
+        aria-label="one_class_button"
         aria-description="button for selecting one class per semester"
         onClick={() => handleClassClick(1)}
       >
@@ -32,7 +30,8 @@ export default function NumClassButton(
       </button>
       <button
         className="class-2"
-        aria-label="two classes button"
+        aria-label="two_classes_button"
+        id="two_classes_button"
         aria-description="button for selecting two classes per semester"
         onClick={() => handleClassClick(2)}
       >
@@ -40,7 +39,8 @@ export default function NumClassButton(
       </button>
       <button
         className="class-3"
-        aria-label="three classes button"
+        aria-label="three_classes_button"
+        id="three_classes_button"
         aria-description="button for selecting three classes per semester"
         onClick={() => handleClassClick(3)}
       >
@@ -48,7 +48,8 @@ export default function NumClassButton(
       </button>
       <button
         className="class-4"
-        aria-label="four classes button"
+        aria-label="four_classes_button"
+        id="four_classes_button"
         aria-description="button for selecting four classes per semester"
         onClick={() => handleClassClick(4)}
       >
@@ -56,7 +57,8 @@ export default function NumClassButton(
       </button>
       <button
         className="class-5"
-        aria-label="five classes button"
+        aria-label="five_classes_button"
+        id="five_classes_button"
         aria-description="button for selecting five classes per semester"
         onClick={() => handleClassClick(5)}
       >

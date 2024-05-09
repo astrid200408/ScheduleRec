@@ -9,6 +9,7 @@ interface ControlledInputProps {
   ariaDescription: string;
   placeholder: string;
   className: string;
+  id: string;
 }
 
 // Input boxes contain state. We want to make sure React is managing that state,
@@ -20,6 +21,7 @@ export function ControlledInput({
   placeholder,
   className,
   ariaDescription,
+  id
 }: ControlledInputProps) {
   return (
     <input
@@ -28,6 +30,7 @@ export function ControlledInput({
       value={value}
       placeholder={placeholder}
       onChange={(ev) => setValue(ev.target.value)}
+      id={id}
       aria-label={ariaLabel}
       aria-description={ariaDescription}
     ></input>

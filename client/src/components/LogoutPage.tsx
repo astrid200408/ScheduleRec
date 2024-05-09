@@ -11,6 +11,7 @@ import {
 import NumClassButton from "./buttons/NumClassButton";
 import ClassHoursButton from "./buttons/ClassHoursButton";
 import Schedule from "./buttons/Schedule";
+import { Accessibility } from "./Accessibility";
 
 const LogoutPage = () => {
   const [includeCommandString, setIncludeCommandString] = useState<string>("");
@@ -28,7 +29,7 @@ const LogoutPage = () => {
   const [classNum, setClassNum] = useState(0);
   const [classHours, setClassHours] = useState<string>("");
 
-  const handleGenerate = (incString: string, deptString: string) => {
+  async function handleGenerate(incString: string, deptString: string) {
     const split = incString.split(",");
     setClassesIncluded(split);
     let copy = ["N", "N", "N", "N", "N"];
@@ -36,8 +37,8 @@ const LogoutPage = () => {
     for (let i = 0; i < split.length; i++) {
       copy[i] = split[i];
     }
-    setClassesIncluded(copy);
-    console.log(copy);
+    setClassesIncluded(copy.map((str) => str.trimStart()));
+    console.log(copy.map((str) => str.trimStart()));
 
     setDeptIncluded(deptString.split(","));
     setMonString(classesIncluded[0]);
@@ -45,9 +46,16 @@ const LogoutPage = () => {
     setIncludeCommandString(" ");
     setDeptCommandString(" ");
 
-    const listCourses = getRecCourses();
+    const listCourses = await getRecCourses();
+    // if (listCourses.length != 0) {
+    //   const course = listCourses[0];
+    //   setMonString(listCourses.toString);
+    // }
+    // for (let i = 0; i < classNum - classesIncluded.length; i++) {
+
+    // }
     console.log(listCourses);
-  };
+  }
 
   const handleClick = () => {
     alert("Button clicked!");
@@ -79,13 +87,81 @@ const LogoutPage = () => {
     };
     //grab recommendations
     const recommendedCourses = await courseRecCall(recCallProps);
+    const coursesArray: [] = recommendedCourses.courses_recommended;
 
+    for (let i = 0; i < 5; i++) {
+      if (classesIncluded[i] != "N") {
+        //get course info from handlers
+      }
+    }
+
+    for (let j = 0; j < coursesArray.length; j++) {
+      //call output method that formats data
+      //takes in name, teacher, time, days
+
+      //TODO: add in real data, not mocks
+      printCourse("a", "b", 1, 20, 2, 30, ["Monday"]);
+    }
     //return recommended courses
-    return recommendedCourses.courses_recommended;
+    return coursesArray;
+  }
+
+  enum Days {
+    Monday = "monbox",
+    Tuesday = "tuesbox",
+    Wednesday = "wedbox",
+    Thursday = "thursbox",
+    Friday = "fribox",
+  }
+
+  function printCourse(
+    name: string,
+    instructor: string,
+    sHr: number,
+    sMin: number,
+    eHr: number,
+    eMin: number,
+    days: string[]
+  ) {
+    let numDays = days.length;
+    //TODO: <br not working- try newlines?
+    let formattedString =
+      name +
+      "<br>" +
+      instructor +
+      "<br>" +
+      sHr +
+      ":" +
+      sMin +
+      " - " +
+      eHr +
+      ":" +
+      eMin;
+    switch (days[0]) {
+      case "Monday":
+        setMonString(formattedString);
+        break;
+      case "Tuesday":
+        setTuesString(formattedString);
+        break;
+      case "Wednesday":
+        setWedString(formattedString);
+        break;
+      case "Thursday":
+        setThursString(formattedString);
+        break;
+      case "Friday":
+        setFriString(formattedString);
+        break;
+      default:
+        console.log("invalid day of week");
+        break;
+    }
   }
 
   return (
     <div className="logout-page" aria-label="main page">
+      <Accessibility />
       <div className="input-fields" aria-label="input section">
         <div className="include-div">
           <button
@@ -98,7 +174,8 @@ const LogoutPage = () => {
           <ControlledInput
             value={includeCommandString}
             setValue={setIncludeCommandString}
-            ariaLabel="include input"
+            ariaLabel="include_input"
+            id="include_input"
             placeholder="Type like this: CSCI0180,CSCI0111,CSCI0200"
             ariaDescription="Type here to input desired classes. Input class codes separated by commas"
             className="include-input"
@@ -108,7 +185,8 @@ const LogoutPage = () => {
         <div className="department-div">
           <button
             className="department-button"
-            aria-label="department button"
+            aria-label="department_button"
+            id="department_button"
             aria-description="button to submit included departments"
           >
             Dept.
@@ -116,7 +194,8 @@ const LogoutPage = () => {
           <ControlledInput
             value={deptCommandString}
             setValue={setDeptCommandString}
-            ariaLabel="department input"
+            ariaLabel="department_input"
+            id="department_input"
             placeholder="Type like this: CSCI,ENGN,MATH"
             ariaDescription="Type here to input desired departments. Input class codes separated by commas"
             className="department-input"
@@ -142,7 +221,8 @@ const LogoutPage = () => {
       <div className="utility-buttons">
         <button
           className="previous-button"
-          aria-label="previous button"
+          aria-label="previous_button"
+          id="previous_button"
           aria-description="button to retrieve the last saved schedule"
           onClick={handleClick}
         >
@@ -150,7 +230,8 @@ const LogoutPage = () => {
         </button>
         <button
           className="save-button"
-          aria-label="save button"
+          aria-label="save_button"
+          id="save_button"
           aria-description="button to save your current generated schedule"
           onClick={handleClick}
         >
@@ -158,7 +239,8 @@ const LogoutPage = () => {
         </button>
         <button
           className="generate-button"
-          aria-label="generate button"
+          aria-label="generate_button"
+          id="generate_button"
           aria-description="button to generate a schedule based on input data"
           onClick={() =>
             handleGenerate(includeCommandString, deptCommandString)
@@ -168,7 +250,8 @@ const LogoutPage = () => {
         </button>
         <button
           className="random-button"
-          aria-label="random button"
+          aria-label="random_button"
+          id="random_button"
           aria-description="button to randomly generate a schedule"
           onClick={handleClick}
         >
