@@ -36,18 +36,18 @@ public class RecCourseHandler implements Route {
     List<String> givenClasses = Arrays.asList(class1, class2, class3, class4, class5);
     RecCourse recommender = new RecCourse(this.classes);
 
-    try{
+    try {
       try {
         responseMap.put("request", "success");
         responseMap.put(
-                "courses_recommended",
-                recommender.getRecCourses(
-                        givenClasses, schedDiffic, classTotal, currSchedDiffic, deptFilter));
+            "courses_recommended",
+            recommender.getRecCourses(
+                givenClasses, schedDiffic, classTotal, currSchedDiffic, deptFilter));
       } catch (RecommendCourseException e) {
         responseMap.put("request", "failure");
         responseMap.put("error", e.getMessage());
       }
-    }catch (CourseDatasourceException c){
+    } catch (CourseDatasourceException c) {
       responseMap.put("request", "failure");
       responseMap.put("error", c.getMessage());
     }

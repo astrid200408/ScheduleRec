@@ -19,7 +19,7 @@ public class RecCourse {
       int classTotal,
       int currSchedDiffic,
       String filter)
-          throws RecommendCourseException, CourseDatasourceException {
+      throws RecommendCourseException, CourseDatasourceException {
 
     System.out.println(givenClasses.toString());
     int count =
@@ -79,7 +79,6 @@ public class RecCourse {
       }
     }
 
-    System.out.println(toReturn.toString());
     return toReturn;
   }
 }
