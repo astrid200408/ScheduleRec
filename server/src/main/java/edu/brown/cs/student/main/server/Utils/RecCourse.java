@@ -48,7 +48,7 @@ public class RecCourse {
     System.out.println("filtered courses: " + filteredCourses);
 
     // find courses that match this and any given filters
-    if (filter != null) {
+    if (filter != null && !filter.equals("N")) {
       filteredCourses = CourseDatasource.getCoursesByDepartment(this.classes, filter);
     }
 
