@@ -8,12 +8,14 @@ import edu.brown.cs.student.main.server.Utils.CourseObject;
 import edu.brown.cs.student.main.server.Utils.JSONParser;
 import edu.brown.cs.student.main.server.handlers.*;
 import edu.brown.cs.student.main.server.storage.FirebaseUtilities;
+import okio.Buffer;
 import org.junit.jupiter.api.*;
 import spark.Spark;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,12 +76,128 @@ public class RecCourseTests {
     }
 
     //no input classes, easy difficulty, no filter, 4 classes
+    @Test
+    public void test4Classes() throws IOException {
+        HttpURLConnection connection = tryRequest("/recommend-courses?current_schedule_difficulty=0"
+                +"&class_amt_wanted=4&schedule_diffic_wanted=LOW");
+
+        assertEquals(200, connection.getResponseCode());
+
+        Map<String, Object> responseBody =
+                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+        List<Object> course = (List<Object>) responseBody.get("courses_recommended");
+        assertEquals(4, course.size());
+
+        connection.disconnect();
+    }
 
     //2 input classes, med difficulty, no filter, 4 classes
+    @Test
+    public void test2Input4Classes() throws IOException {
+        HttpURLConnection connection = tryRequest("/recommend-courses?current_schedule_difficulty=0"
+                +"&class_amt_wanted=4&schedule_diffic_wanted=MEDIUM&class_one=CSCI111&class_two=CHEM301");
+
+        assertEquals(200, connection.getResponseCode());
+
+        Map<String, Object> responseBody =
+                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+        List<Object> course = (List<Object>) responseBody.get("courses_recommended");
+        assertEquals(2, course.size());
+
+        connection.disconnect();
+    }
 
     //no input classes, med difficulty, filter, 2 classes
+    @Test
+    public void testFilter2Classes() throws IOException {
+        HttpURLConnection connection = tryRequest("/recommend-courses?current_schedule_difficulty=0"
+                +"&class_amt_wanted=2&schedule_diffic_wanted=MEDIUM&filter=CSCI");
+
+        assertEquals(200, connection.getResponseCode());
+
+        Map<String, Object> responseBody =
+                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+        List<Object> course = (List<Object>) responseBody.get("courses_recommended");
+        assertEquals(2, course.size());
+
+        connection.disconnect();
+    }
+
+    //any diffic, 4 classes
+    @Test
+    public void testAny4Classes() throws IOException {
+        HttpURLConnection connection = tryRequest("/recommend-courses?current_schedule_difficulty=0"
+                +"&class_amt_wanted=4&schedule_diffic_wanted=ANY");
+
+        assertEquals(200, connection.getResponseCode());
+
+        Map<String, Object> responseBody =
+                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+        List<Object> course = (List<Object>) responseBody.get("courses_recommended");
+        assertEquals(4, course.size());
+
+        connection.disconnect();
+    }
 
     //3 input classes, 4 classes
+    @Test
+    public void test3Input4Classes() throws IOException {
+        HttpURLConnection connection = tryRequest("/recommend-courses?current_schedule_difficulty=0"
+                +"&class_amt_wanted=4&schedule_diffic_wanted=MEDIUM&class_one=CSCI111&"+
+                "class_two=CHEM301&class_three=CLPS440");
 
-    //3 input classes, 3 classes
+        assertEquals(200, connection.getResponseCode());
+
+        Map<String, Object> responseBody =
+                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+        List<Object> course = (List<Object>) responseBody.get("courses_recommended");
+        assertEquals(1, course.size());
+
+        connection.disconnect();
+    }
+
+    //3 input classes, 3 classes, should return an error
+    @Test
+    public void test3Input3Classes() throws IOException {
+        HttpURLConnection connection = tryRequest("/recommend-courses?current_schedule_difficulty=0"
+                +"&class_amt_wanted=3&schedule_diffic_wanted=MEDIUM&class_one=CSCI111&class_two=CHEM301&class_three=CLPS440");
+
+        assertEquals(200, connection.getResponseCode());
+
+        Map<String, Object> responseBody =
+                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+        assertEquals("no room left to add classes in schedule", responseBody.get("error"));
+
+        connection.disconnect();
+    }
+
+    //0 classes
+    @Test
+    public void testNoInfo0Classes() throws IOException {
+        HttpURLConnection connection = tryRequest("/recommend-courses?current_schedule_difficulty=0"
+                +"&class_amt_wanted=0");
+
+        assertEquals(200, connection.getResponseCode());
+
+        Map<String, Object> responseBody =
+                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+        assertEquals("no room left to add classes in schedule", responseBody.get("error"));
+
+        connection.disconnect();
+    }
+
+    //info with 0 classes
+    @Test
+    public void test0Classes() throws IOException {
+        HttpURLConnection connection = tryRequest("/recommend-courses?current_schedule_difficulty=0"
+                +"&class_amt_wanted=0&schedule_diffic_wanted=MEDIUM&class_one=CSCI111&class_two=CHEM301&class_three=CLPS440");
+
+        assertEquals(200, connection.getResponseCode());
+
+        Map<String, Object> responseBody =
+                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+        assertEquals("no room left to add classes in schedule", responseBody.get("error"));
+
+        connection.disconnect();
+    }
 }
