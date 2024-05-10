@@ -9,21 +9,35 @@ import edu.brown.cs.student.main.server.Utils.JSONParser;
 import edu.brown.cs.student.main.server.handlers.*;
 import edu.brown.cs.student.main.server.storage.FirebaseUtilities;
 import okio.Buffer;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import spark.Spark;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CalcDifficTests {
+public class DatabaseHandlersTests {
 
-    private JsonAdapter<Map<String, Object>> responseAdapter = new Moshi.Builder().build().adapter(Types.newParameterizedType(Map.class, String.class, Object.class));;
+    private JsonAdapter<Map<String, Object>> responseAdapter =
+            new Moshi.Builder().build().adapter(Types.newParameterizedType(Map.class, String.class, Object.class));
+    static FirebaseUtilities utils;
+
+    static {
+        try {
+            utils = new FirebaseUtilities();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @BeforeAll
     public static void setup_before_everything() throws IOException {
 
@@ -34,7 +48,7 @@ public class CalcDifficTests {
         CourseObject courseObject = courseCreator.getParsedJSON();
         // here we can update our course object with our calculated scores method
         CourseDatasource.calcCourseDiffic(courseObject);
-        FirebaseUtilities utils = new FirebaseUtilities();
+
 
         Spark.get("get-difficulty", new CalcDifficHandler(courseObject));
         Spark.get("add-courses", new AddCoursesHandler(utils));
@@ -58,7 +72,6 @@ public class CalcDifficTests {
         Spark.unmap("check-courses");
         Spark.awaitStop(); // don't proceed until the server is stopped
     }
-
     private static HttpURLConnection tryRequest(String apiCall) throws IOException {
         // Configure the connection (but don't actually send the request yet)
         URL requestURL = new URL("http://localhost:" + Spark.port() + "/" + apiCall);
@@ -72,99 +85,84 @@ public class CalcDifficTests {
         return clientConnection;
     }
 
-
-    //test one classes
+    //save 5 courses - clear
     @Test
-    public void testOneClassDiffic() throws IOException {
-        HttpURLConnection connection = tryRequest("/get-difficulty?class_one=CSCI111");
+    public void save5Courses() throws IOException {
+        String uid = "tester";
+        HttpURLConnection connection = tryRequest("/add-courses?uid="+uid+"&class_one=CSCI111"+
+                "&class_two=APMA1650&class_three=CHEM301&class_four=CLPS440&class_five=BIOL210");
 
         assertEquals(200, connection.getResponseCode());
 
         Map<String, Object> responseBody =
                 this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+        assertEquals("success", responseBody.get("response_type"));
 
-        assertEquals(9.0, responseBody.get("schedule_difficulty"));
-
+        utils.clearUser(uid);
         connection.disconnect();
     }
 
-    //test no classes
+    //save and retrieve 5 courses - clear
     @Test
-    public void testNoClassDiffic() throws IOException {
-        HttpURLConnection connection = tryRequest("/get-difficulty?");
+    public void saveGet5Courses() throws IOException {
+        String uid = "tester";
 
+        HttpURLConnection connection = tryRequest("/add-courses?uid="+uid+"&class_one=CSCI111"+
+                "&class_two=APMA1650&class_three=CHEM301&class_four=CLPS440&class_five=BIOL210");
+        assertEquals(200, connection.getResponseCode());
+        connection.disconnect();
+
+        connection = tryRequest("get-saved-scheds?uid="+uid);
         assertEquals(200, connection.getResponseCode());
 
         Map<String, Object> responseBody =
                 this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+        List<String> course = (List<String>) responseBody.get("courses");
+        assertEquals("[{class_four=CLPS440, class_two=APMA1650, class_five=BIOL210, class_three=CHEM301, class_one=CSCI111}]"
+                , course.toString());
 
-        assertEquals(0.0, responseBody.get("schedule_difficulty"));
-
+        utils.clearUser(uid);
         connection.disconnect();
     }
 
-    //test 4 classes
+    //retrieve no courses
     @Test
-    public void testFourClassDiffic() throws IOException {
-        HttpURLConnection connection = tryRequest("/get-difficulty?class_one=CSCI111&class_two=HIST333"+
-                "&class_three=CSCI150&class_four=CLPS330");
-
+    public void get0Courses() throws IOException {
+        String uid = "tester";
+        HttpURLConnection connection = tryRequest("get-saved-scheds?uid="+uid);
         assertEquals(200, connection.getResponseCode());
 
         Map<String, Object> responseBody =
                 this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+        List<String> course = (List<String>) responseBody.get("courses");
+        assertEquals("[]"
+                , course.toString());
 
-        assertEquals(54.0, responseBody.get("schedule_difficulty"));
-
+        utils.clearUser(uid);
         connection.disconnect();
+
     }
 
-    //test 5 classes
+    //save null courses and retrieve - clear
     @Test
-    public void testFiveClassDiffic() throws IOException {
-        HttpURLConnection connection = tryRequest("/get-difficulty?class_one=CSCI111&class_two=HIST333"+
-                "&class_three=CSCI150&class_four=CLPS330&class_five=VISA250");
+    public void saveGet0Courses() throws IOException {
+        String uid = "tester";
 
+        HttpURLConnection connection = tryRequest("/add-courses?uid="+uid);
+        assertEquals(200, connection.getResponseCode());
+        connection.disconnect();
+
+        connection = tryRequest("get-saved-scheds?uid="+uid);
         assertEquals(200, connection.getResponseCode());
 
         Map<String, Object> responseBody =
                 this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+        List<String> course = (List<String>) responseBody.get("courses");
+        assertEquals("[]"
+                , course.toString());
 
-        assertEquals(85.0, responseBody.get("schedule_difficulty"));
-
+        utils.clearUser(uid);
         connection.disconnect();
+
     }
-
-    //test 6 classes
-    @Test
-    public void testSixClassDiffic() throws IOException {
-        HttpURLConnection connection = tryRequest("/get-difficulty?class_one=CSCI111&class_two=HIST333"+
-                "&class_three=CSCI150&class_four=CLPS330&class_five=VISA250&class_six=SOC105");
-
-        assertEquals(200, connection.getResponseCode());
-
-        Map<String, Object> responseBody =
-                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
-
-        assertEquals(85.0, responseBody.get("schedule_difficulty"));
-
-        connection.disconnect();
-    }
-
-    //calc course that doesn't exist
-    @Test
-    public void testNonClassDiffic() throws IOException {
-        HttpURLConnection connection = tryRequest("/get-difficulty?class_one=CSCI111&class_two=HIST3033"+
-                "&class_three=CSCI150&class_four=CLPS330&class_five=VISA250");
-
-        assertEquals(200, connection.getResponseCode());
-
-        Map<String, Object> responseBody =
-                this.responseAdapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
-
-        assertEquals(48.0, responseBody.get("schedule_difficulty"));
-
-        connection.disconnect();
-    }
-
 }
