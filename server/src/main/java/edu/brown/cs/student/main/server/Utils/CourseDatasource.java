@@ -1,11 +1,15 @@
 package edu.brown.cs.student.main.server.Utils;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.brown.cs.student.main.server.Exceptions.CourseDatasourceException;
 import edu.brown.cs.student.main.server.Utils.CourseObject.Assignment;
 import edu.brown.cs.student.main.server.Utils.CourseObject.Coursework;
 import edu.brown.cs.student.main.server.Utils.CourseObject.Exam;
 import edu.brown.cs.student.main.server.Utils.CourseObject.Paper;
 import edu.brown.cs.student.main.server.Utils.CourseObject.Project;
 import edu.brown.cs.student.main.server.Utils.CourseObject.Reading;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,15 +17,28 @@ import java.util.List;
 public class CourseDatasource {
 
   public static List<CourseObject.Course> getCoursesByDepartment(
-      CourseObject courseObject, String department) {
+      CourseObject courseObject, String departments) throws CourseDatasourceException {
     List<CourseObject.Course> departmentCourses = new ArrayList<>();
 
-    if (courseObject.courses != null) {
-      for (CourseObject.Course course : courseObject.courses) {
-        if (course.code.startsWith(department)) {
-          departmentCourses.add(course);
+    ObjectMapper objectMapper = new ObjectMapper();
+    try {
+      // Parse JSON string into a list of strings
+      List<String> departmentList =
+          objectMapper.readValue(departments, new TypeReference<List<String>>() {});
+
+      if (courseObject.courses != null) {
+        for (CourseObject.Course course : courseObject.courses) {
+          for (String department : departmentList) {
+            if (course.code.startsWith(department)) {
+              departmentCourses.add(course);
+            }
+          }
         }
       }
+      // Print the list to verify
+      System.out.println(departmentList);
+    } catch (IOException e) {
+      throw new CourseDatasourceException("filter should be in a list of departments");
     }
 
     return departmentCourses;

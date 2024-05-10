@@ -1,5 +1,6 @@
 package edu.brown.cs.student.main.server.handlers;
 
+import edu.brown.cs.student.main.server.Exceptions.CourseDatasourceException;
 import edu.brown.cs.student.main.server.Exceptions.RecommendCourseException;
 import edu.brown.cs.student.main.server.Utils.CourseObject;
 import edu.brown.cs.student.main.server.Utils.RecCourse;
@@ -19,12 +20,10 @@ public class RecCourseHandler implements Route {
   @Override
   public Object handle(Request request, Response response) throws Exception {
     Map<String, Object> responseMap = new HashMap<>();
-    // get params needed : current courseload difficulty, current classes in sched, how many total
-    // courses wanted, wanted
-    // courseload difficulty
-    int currSchedDiffic = Integer.parseInt(request.queryParams("current-schedule-difficulty"));
-    int classTotal = Integer.parseInt(request.queryParams("class-amt-wanted"));
-    String schedDiffic = request.queryParams("schedule-diffic-wanted");
+
+    int currSchedDiffic = Integer.parseInt(request.queryParams("current_schedule_difficulty"));
+    int classTotal = Integer.parseInt(request.queryParams("class_amt_wanted"));
+    String schedDiffic = request.queryParams("schedule_diffic_wanted");
     String class1 = request.queryParams("class_one");
     String class2 = request.queryParams("class_two");
     String class3 = request.queryParams("class_three");
@@ -38,14 +37,19 @@ public class RecCourseHandler implements Route {
     RecCourse recommender = new RecCourse(this.classes);
 
     try {
-      responseMap.put("request", "success");
-      responseMap.put(
-          "courses_recommended",
-          recommender.getRecCourses(
-              givenClasses, schedDiffic, classTotal, currSchedDiffic, deptFilter));
-    } catch (RecommendCourseException e) {
+      try {
+        responseMap.put("request", "success");
+        responseMap.put(
+            "courses_recommended",
+            recommender.getRecCourses(
+                givenClasses, schedDiffic, classTotal, currSchedDiffic, deptFilter));
+      } catch (RecommendCourseException e) {
+        responseMap.put("request", "failure");
+        responseMap.put("error", e.getMessage());
+      }
+    } catch (CourseDatasourceException c) {
       responseMap.put("request", "failure");
-      responseMap.put("error", e.getMessage());
+      responseMap.put("error", c.getMessage());
     }
 
     return moshiAdapter.toMoshiJson(responseMap);

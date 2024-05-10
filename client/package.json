@@ -10,6 +10,8 @@
     "caniuse-lite": "^1.0.30001615",
     "dotenv": "^16.4.4",
     "firebase": "^10.8.1",
+    "js-cookie": "^3.0.5",
+    "mousetrap": "^1.6.5",
     "playwright": "^1.38.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -17,6 +19,8 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.39.0",
+    "@types/js-cookie": "^3.0.6",
+    "@types/mousetrap": "^1.6.15",
     "@types/node": "^20.11.5",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",

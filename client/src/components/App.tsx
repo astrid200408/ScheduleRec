@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import "../styles/App.css";
 import AuthRoute from "./AuthRoute";
 import Header from "./Header";
+import LogoutPage from "./LogoutPage";
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -19,8 +20,8 @@ initializeApp(firebaseConfig);
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <AuthRoute />
+      <Header />
+      <AuthRoute gatedContent={<LogoutPage />} />
     </div>
   );
 }
