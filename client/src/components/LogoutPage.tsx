@@ -19,14 +19,14 @@ const LogoutPage = () => {
   const [includeCommandString, setIncludeCommandString] = useState<string>("");
   const [deptCommandString, setDeptCommandString] = useState<string>("");
 
-  const [monString, setMonString] = useState<string>("");
-  const [tuesString, setTuesString] = useState<string>("");
-  const [wedString, setWedString] = useState<string>("");
-  const [thursString, setThursString] = useState<string>("");
-  const [friString, setFriString] = useState<string>("");
+  const [monString, setMonString] = useState<string[]>([]);
+  const [tuesString, setTuesString] = useState<string[]>([]);
+  const [wedString, setWedString] = useState<string[]>([]);
+  const [thursString, setThursString] = useState<string[]>([]);
+  const [friString, setFriString] = useState<string[]>([]);
 
   const [classesIncluded, setClassesIncluded] = useState<string[]>([]);
-  const [deptIncluded, setDeptIncluded] = useState<string[]>([]);
+  const [deptIncluded, setDeptIncluded] = useState<string>("N");
   const [currSched, setCurrSched] = useState<string[]>([]);
 
   const [classNum, setClassNum] = useState(0);
@@ -36,7 +36,8 @@ const LogoutPage = () => {
     const split = incString.split(",");
     setClassesIncluded(split);
     let copy = ["N", "N", "N", "N", "N"];
-    if (split[0] != "" && split.length == 0) {
+    //if there are no specified included classes, all classes should be N
+    if (split[0] != "" && split.length != 0) {
       for (let i = 0; i < split.length; i++) {
         copy[i] = split[i];
       }
@@ -44,7 +45,7 @@ const LogoutPage = () => {
     setClassesIncluded(copy.map((str) => str.trimStart()));
     console.log(copy.map((str) => str.trimStart()));
 
-    setDeptIncluded(deptString.split(","));
+    setDeptIncluded(deptString.split(",").toString());
     setIncludeCommandString("");
     setDeptCommandString("");
   }
@@ -95,7 +96,7 @@ const LogoutPage = () => {
       class_three: classesIncluded[2],
       class_four: classesIncluded[3],
       class_five: classesIncluded[4],
-      filter: deptIncluded.toString(),
+      filter: deptIncluded ? deptIncluded.toString() : "N",
       current_schedule_difficulty: diffic,
     };
     //grab recommendations
@@ -106,7 +107,7 @@ const LogoutPage = () => {
     );
     setCurrSched(mergeAndPadClasses(classesIncluded, recCourseCodes));
     for (let i = 0; i < 5; i++) {
-      if (classesIncluded[i] != "N") {
+      if (currSched[i] != "N") {
         const courseCall = await getCourse(classesIncluded[i]);
         const courseInfo = courseCall.course;
         console.log(courseInfo);
@@ -178,25 +179,30 @@ const LogoutPage = () => {
     //text- either big string w/ newlines or array<str> that is formatted in sched class
 
     console.log(formattedString);
-    switch (days[0]) {
-      case "Monday":
-        setMonString(formattedString);
-        break;
-      case "Tuesday":
-        setTuesString(formattedString);
-        break;
-      case "Wednesday":
-        setWedString(formattedString);
-        break;
-      case "Thursday":
-        setThursString(formattedString);
-        break;
-      case "Friday":
-        setFriString(formattedString);
-        break;
-      default:
-        console.log("invalid day of week");
-        break;
+    let i = 0;
+    while (i < numDays) {
+      switch (days[i]) {
+        case "Monday":
+          setMonString([...monString, formattedString]);
+          console.log(monString);
+          break;
+        case "Tuesday":
+          setTuesString([...tuesString, formattedString]);
+          break;
+        case "Wednesday":
+          setWedString([...wedString, formattedString]);
+          break;
+        case "Thursday":
+          setThursString([...thursString, formattedString]);
+          break;
+        case "Friday":
+          setFriString([...friString, formattedString]);
+          break;
+        default:
+          console.log("invalid day of week");
+          break;
+      }
+      i++;
     }
   }
 

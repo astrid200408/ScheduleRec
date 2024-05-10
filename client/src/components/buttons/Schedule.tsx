@@ -5,11 +5,11 @@ Class that contains the html components that form the Mon-Fri schedule design
 */
 
 interface ScheduleInterface {
-    mString: string;
-    tuString: string;
-    wString: string;
-    thString: string;
-    fString: string;
+    mString: string[];
+    tuString: string[];
+    wString: string[];
+    thString: string[];
+    fString: string[];
 }
 export default function Schedule(
   props:ScheduleInterface
@@ -21,8 +21,11 @@ return (
             className="monbox"
             aria-label="monday box"
             aria-description="box containing Monday class"
-          >
-            <p className="monPar">{props.mString}</p>
+          >\
+            {/* Loop through the array of strings and generate JSX elements */}
+            {props.mString.map((str, index) => (
+                // Use a key prop to uniquely identify each element
+                <p key={index}>{str}</p>))}
           </div>
           <div
             className="tuesbox"
