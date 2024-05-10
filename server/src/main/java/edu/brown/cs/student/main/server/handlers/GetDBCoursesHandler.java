@@ -42,16 +42,18 @@ public class GetDBCoursesHandler implements Route {
       List<String> class_five = getCoursesNum("five", vals);
 
       List<Map<String, Object>> courses = new ArrayList<>();
-      for (int i = 0; i < class_one.size(); i++) {
-        Map<String, Object> sched = new HashMap<String, Object>();
-        sched.put("class_one", toPut(class_one, i));
-        sched.put("class_two", toPut(class_two, i));
-        sched.put("class_three", toPut(class_three, i));
-        sched.put("class_four", toPut(class_four, i));
-        sched.put("class_five", toPut(class_five, i));
-        courses.add(sched);
-      }
 
+      if (class_one != null) {
+        for (int i = 0; i < class_one.size(); i++) {
+          Map<String, Object> sched = new HashMap<String, Object>();
+          sched.put("class_one", toPut(class_one, i));
+          sched.put("class_two", toPut(class_two, i));
+          sched.put("class_three", toPut(class_three, i));
+          sched.put("class_four", toPut(class_four, i));
+          sched.put("class_five", toPut(class_five, i));
+          courses.add(sched);
+        }
+      }
       responseMap.put("response_type", "success");
       responseMap.put("courses", courses);
 

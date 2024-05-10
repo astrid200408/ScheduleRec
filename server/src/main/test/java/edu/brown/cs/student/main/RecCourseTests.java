@@ -111,7 +111,7 @@ public class RecCourseTests {
     @Test
     public void testFilter2Classes() throws IOException {
         HttpURLConnection connection = tryRequest("/recommend-courses?current_schedule_difficulty=0"
-                +"&class_amt_wanted=2&schedule_diffic_wanted=MEDIUM&filter=CSCI");
+                +"&class_amt_wanted=2&schedule_diffic_wanted=MEDIUM&filter=[\"CSCI\"]");
 
         assertEquals(200, connection.getResponseCode());
 
