@@ -205,7 +205,7 @@ const LogoutPage = () => {
 
   async function prev() {
     const classes = await previous();
-    console.log(classes);
+    console.log("prev: " + classes);
     for (let i = 0; i < 5; i++) {
       if (classes[i] != "N") {
         const courseCall = await getCourse(classesIncluded[i]);
