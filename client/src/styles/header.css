@@ -7,4 +7,8 @@
   padding: 1.5em 1.5em;
 }
 
-
+.brown-image {
+  user-select: none;
+    width: 5em;
+    height: auto;
+}
