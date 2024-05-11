@@ -1,9 +1,9 @@
 package edu.brown.cs.student.main.server.Exceptions;
 
 /**
- * This exception communicates that something went wrong with a requested course recommendation. It _wraps_ the
- * original cause as a field, which helps with debugging, but also allows the caller to handle the
- * issue uniformly if they wish, without looking inside.
+ * This exception communicates that something went wrong with a requested course recommendation. It
+ * _wraps_ the original cause as a field, which helps with debugging, but also allows the caller to
+ * handle the issue uniformly if they wish, without looking inside.
  */
 public class RecommendCourseException extends Exception {
   // The root cause of this datasource problem

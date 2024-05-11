@@ -8,9 +8,7 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
-/**
- * This class adds a current schedule to a user's database file to retrieve later
- */
+/** This class adds a current schedule to a user's database file to retrieve later */
 public class AddCoursesHandler implements Route {
 
   public StorageInterface storageHandler;

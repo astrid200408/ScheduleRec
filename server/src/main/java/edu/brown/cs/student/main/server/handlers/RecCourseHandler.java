@@ -10,9 +10,7 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
-/**
- * this class recommends courses using our algorithm using inputted information
- */
+/** this class recommends courses using our algorithm using inputted information */
 public class RecCourseHandler implements Route {
   CourseObject classes;
 
@@ -25,8 +23,8 @@ public class RecCourseHandler implements Route {
     Map<String, Object> responseMap = new HashMap<>();
 
     /**
-     * grab course information such as: difficulty of current schedule, any included classes, filter, and total classes
-     * needed
+     * grab course information such as: difficulty of current schedule, any included classes,
+     * filter, and total classes needed
      */
     int currSchedDiffic = Integer.parseInt(request.queryParams("current_schedule_difficulty"));
     int classTotal = Integer.parseInt(request.queryParams("class_amt_wanted"));
@@ -46,7 +44,7 @@ public class RecCourseHandler implements Route {
       try {
         responseMap.put("request", "success");
 
-        //grab recommended classes
+        // grab recommended classes
         responseMap.put(
             "courses_recommended",
             recommender.getRecCourses(

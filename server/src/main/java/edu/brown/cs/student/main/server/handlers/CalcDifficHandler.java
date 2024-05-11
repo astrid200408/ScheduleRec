@@ -9,7 +9,8 @@ import spark.Response;
 import spark.Route;
 
 /**
- * this class takes in included classes in a schedule and returns a calculated difficulty score for them
+ * this class takes in included classes in a schedule and returns a calculated difficulty score for
+ * them
  */
 public class CalcDifficHandler implements Route {
   CourseObject classes;

@@ -1,8 +1,6 @@
 package edu.brown.cs.student.main.server.Utils;
 
-/**
- * enum used in RecCourse that provides range in course difficulty
- */
+/** enum used in RecCourse that provides range in course difficulty */
 enum Difficulty {
   LOW,
   MEDIUM,
@@ -10,6 +8,7 @@ enum Difficulty {
 
   /**
    * grabs a score for an individual class that would be considered that difficulty
+   *
    * @return - score as an int
    */
   public int getDifficScore() {
@@ -30,6 +29,7 @@ enum Difficulty {
 
   /**
    * Takes in a number and assigns it a difficulty based on range
+   *
    * @param score - difficulty score of a class
    * @return - difficulty level
    */
@@ -48,6 +48,7 @@ enum Difficulty {
 
   /**
    * takes in a string and returns a difficulty
+   *
    * @param text - string version of difficulty enum
    * @return - difficulty
    */

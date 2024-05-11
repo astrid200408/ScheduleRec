@@ -3,14 +3,13 @@ package edu.brown.cs.student.main.server.Utils;
 import edu.brown.cs.student.main.server.Utils.CourseObject.Course;
 import java.util.*;
 
-/**
- * calculates a schedules difficulty
- */
+/** calculates a schedules difficulty */
 public class CalcDiffic {
   List<Course> classes;
 
   /**
    * calculates a schedules difficulty
+   *
    * @param myClasses - dataset with all courses provided in backend
    */
   public CalcDiffic(CourseObject myClasses) {
@@ -19,6 +18,7 @@ public class CalcDiffic {
 
   /**
    * adds up course difficulty score
+   *
    * @param givenClasses - courses in a schedule to add up
    * @return - difficulty score as an int
    */
