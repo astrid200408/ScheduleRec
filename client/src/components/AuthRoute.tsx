@@ -16,7 +16,13 @@ function AuthRoute(props: AuthRouteProps) {
 
   return (
     <>
-      <LoginLogout authing={loggedIn} setAuthing={setLogin} gatedContent={props.gatedContent} />
+      <LoginLogout
+        authing={loggedIn}
+        setAuthing={setLogin}
+        gatedContent={props.gatedContent}
+      />
+
+      {/* {loggedIn ? props.gatedContent : null} */}
     </>
   );
 }
