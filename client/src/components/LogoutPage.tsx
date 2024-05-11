@@ -259,7 +259,7 @@ const LogoutPage = () => {
             setValue={setIncludeCommandString}
             ariaLabel="include_input"
             id="include_input"
-            placeholder="Type like this: CSCI0180,CSCI0111,CSCI0200"
+            placeholder="Type like this: CSCI0180"
             ariaDescription="Type here to input desired classes. Input class codes separated by commas"
             className="include-input"
           />
