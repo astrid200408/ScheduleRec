@@ -13,15 +13,13 @@ function AuthRoute(props: AuthRouteProps) {
   if (!authing && getLoginCookie() !== undefined) {
     setAuthing(true);
   }
-
   return (
     <>
       <LoginLogout
-        authing={true}
+        authing={authing}
         setAuthing={setAuthing}
-        gatedContent={props.gatedContent}
+        gatedContent={authing ? props.gatedContent : null}
       />
-      {/* {loggedIn ? props.gatedContent : null} */}
     </>
   );
 }

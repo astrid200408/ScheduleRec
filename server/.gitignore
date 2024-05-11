@@ -1,5 +1,7 @@
 .idea/
 
+.mvn-classpath
+
 geodata/*.json
 geodata/*.geojson
 

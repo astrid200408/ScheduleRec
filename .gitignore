@@ -12,6 +12,8 @@ dist/
 geodata/*.json
 geodata/*.geojson
 
+.mvn-classpath
+
 resources/
 target/
 private/
