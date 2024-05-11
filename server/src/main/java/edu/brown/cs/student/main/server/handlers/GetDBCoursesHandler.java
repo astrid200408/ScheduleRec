@@ -35,6 +35,7 @@ public class GetDBCoursesHandler implements Route {
 
       // get all the courses
       List<Map<String, Object>> vals = this.storageHandler.getCollection(uid, "courses");
+      System.out.println("VALS: " + vals);
       List<String> class_one = getCoursesNum("one", vals);
       List<String> class_two = getCoursesNum("two", vals);
       List<String> class_three = getCoursesNum("three", vals);

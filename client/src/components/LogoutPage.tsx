@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/logoutpage.css";
 import { ControlledInput } from "./ControlledInput";
-import { NOMEM } from "dns";
 import {
   courseRecCall,
   curr_Sched,
@@ -32,7 +31,18 @@ const LogoutPage = () => {
   const [classNum, setClassNum] = useState(0);
   const [classHours, setClassHours] = useState<string>("");
 
+  const [errString, setErrString] = useState<string>("");
+
+  function clearBoxes() {
+    setMonString([""]);
+    setTuesString([""]);
+    setWedString([""]);
+    setThursString([""]);
+    setFriString([""]);
+  }
+
   async function handleGenerate(incString: string, deptString: string) {
+    clearBoxes;
     const split = incString.split(",");
     setClassesIncluded(split);
     let copy = ["N", "N", "N", "N", "N"];
@@ -43,7 +53,6 @@ const LogoutPage = () => {
       }
     }
     setClassesIncluded(copy.map((str) => str.trimStart()));
-    console.log(copy.map((str) => str.trimStart()));
 
     setDeptIncluded(deptString.split(",").toString());
     setIncludeCommandString("");
@@ -53,8 +62,11 @@ const LogoutPage = () => {
   useEffect(() => {
     const callFunction = async () => await getRecCourses();
     const listCourses = callFunction();
-    console.log(listCourses);
   }, [classesIncluded]);
+
+  useEffect(() => {
+    setTimeout(errString);
+  }, [errString]);
 
   function mergeAndPadClasses(
     userInput: string[],
@@ -63,15 +75,23 @@ const LogoutPage = () => {
   ): string[] {
     // Filter out placeholders from user input
     const userClasses = userInput.filter((cls) => cls !== "N");
+    let a = userClasses.length;
+    let b = backendData.length;
+    let c = 5 - (a + b);
+    let nStr = [];
+    for (let i = 0; i < c; i++) {
+      nStr[i] = "N";
+    }
 
     // Combine user classes with backend classes
-    const combinedClasses = [...userClasses, ...backendData];
+    const combinedClasses = [...userClasses, ...backendData, ...nStr];
+    return combinedClasses;
 
-    // Ensure the combined result is exactly 'size' long
-    const result = combinedClasses.slice(0, size);
+    // // Ensure the combined result is exactly 'size' long
+    // const result = combinedClasses.slice(0, size);
 
-    // Fill the remaining slots with "N" if needed
-    return [...result, ...Array(size - result.length).fill("N")];
+    // // Fill the remaining slots with "N" if needed
+    // return [...result, ...Array(size - result.length).fill("N")];
   }
 
   async function getRecCourses() {
@@ -105,13 +125,19 @@ const LogoutPage = () => {
     const recCourseCodes = coursesArray.map(
       (course: { code: string }) => course.code
     );
-    setCurrSched(mergeAndPadClasses(classesIncluded, recCourseCodes));
+    console.log(recCourseCodes);
+    //combines specified classes and recommended classes into one list
+    await setCurrSched(mergeAndPadClasses(classesIncluded, recCourseCodes));
+    console.log("mergepad = " + currSched);
+
+    //goes through every valid class in schedule list and prints their course info
     for (let i = 0; i < 5; i++) {
       if (currSched[i] != "N") {
         const courseCall = await getCourse(classesIncluded[i]);
         const courseInfo = courseCall.course;
         console.log(courseInfo);
         printCourse(
+          i,
           courseInfo.name,
           courseInfo.professor,
           courseInfo.schedule[0].timeSlots[0].startHour,
@@ -123,25 +149,12 @@ const LogoutPage = () => {
       }
     }
 
-    for (let j = 0; j < coursesArray.length; j++) {
-      //call output method that formats data
-      //takes in name, teacher, time, days
-      //TODO: add in real data, not mocks
-      // printCourse("a", "b", 1, 20, 2, 30, ["Thursday"]);
-    }
-    //return recommended courses
     return coursesArray;
   }
 
-  enum Days {
-    Monday = "monbox",
-    Tuesday = "tuesbox",
-    Wednesday = "wedbox",
-    Thursday = "thursbox",
-    Friday = "fribox",
-  }
-
+  /* This method prints out a course in one of the schedule boxes. */
   function printCourse(
+    index: number,
     name: string,
     instructor: string,
     sHr: number,
@@ -150,62 +163,76 @@ const LogoutPage = () => {
     eMin: number,
     days: string[]
   ) {
-    let numDays = days.length;
-    console.log(numDays);
-    //TODO: <br not working- try newlines?
-    const formattedString =
-      name +
-      "\n" +
-      instructor +
-      "\n" +
-      sHr +
-      ":" +
-      sMin +
-      " - " +
-      eHr +
-      ":" +
-      eMin;
+    let startMin = "";
+    let endMin = "";
+    //converting hours ending in 0 to a calendar format
+    sMin == 0 ? (startMin = "00") : (startMin = sMin.toString());
+    eMin == 0 ? (endMin = "00") : (endMin = eMin.toString());
 
-    // <div>
-    //   {name} <br /> {instructor} <br /> {sHr}:{sMin} - eHr:eMin
-    // </div>
+    const formattedString = [
+      name,
+      instructor,
+      sHr.toString(),
+      startMin,
+      eHr.toString(),
+      endMin,
+      days.map((day) => " " + day).toString(),
+    ];
 
-    //instead of setting the string of the paragraph of the day boxes to values-
-    //return a div that will represent a "class element" and reside in the day box?
-    //how would i set that to be inside the day box? ->
-    //should it have a border, color, text color, etc?
-    //should each day box have hidden class boxes inside them that become visible when needed?
-    //moving day boxes to diff class- what info do they need? ->
-    //text- either big string w/ newlines or array<str> that is formatted in sched class
-
-    console.log(formattedString);
-    let i = 0;
-    while (i < numDays) {
-      switch (days[i]) {
-        case "Monday":
-          setMonString([...monString, formattedString]);
-          console.log(monString);
-          break;
-        case "Tuesday":
-          setTuesString([...tuesString, formattedString]);
-          break;
-        case "Wednesday":
-          setWedString([...wedString, formattedString]);
-          break;
-        case "Thursday":
-          setThursString([...thursString, formattedString]);
-          break;
-        case "Friday":
-          setFriString([...friString, formattedString]);
-          break;
-        default:
-          console.log("invalid day of week");
-          break;
-      }
-      i++;
+    switch (index) {
+      case 0:
+        setMonString(formattedString);
+        break;
+      case 1:
+        setTuesString(formattedString);
+        break;
+      case 2:
+        setWedString(formattedString);
+        break;
+      case 3:
+        setThursString(formattedString);
+        break;
+      case 4:
+        setFriString(formattedString);
+        break;
+      default:
+        setErrString(
+          "Encountered error reading classes. Please check text formatting and try again."
+        );
+        break;
     }
   }
 
+  async function prev() {
+    const classes = await previous();
+    console.log(classes);
+    for (let i = 0; i < 5; i++) {
+      if (classes[i] != "N") {
+        const courseCall = await getCourse(classesIncluded[i]);
+        const courseInfo = courseCall.course;
+        printCourse(
+          i,
+          courseInfo.name,
+          courseInfo.professor,
+          courseInfo.schedule[0].timeSlots[0].startHour,
+          courseInfo.schedule[0].timeSlots[0].startMinute,
+          courseInfo.schedule[0].timeSlots[0].endHour,
+          courseInfo.schedule[0].timeSlots[0].endMinute,
+          courseInfo.schedule[0].days
+        );
+      }
+    }
+  }
+
+  /* Timeout method to remove error message after specified interval */
+  setTimeout((id: string) => {
+    const elt = document.getElementById(id);
+    elt
+      ? elt.remove()
+      : console.log("expected elt to remove, but encountered none");
+  }, 3000);
+
+  /* HTML Elements that make up front-end display of the web page*/
   return (
     <div className="logout-page" aria-label="main page">
       <Accessibility />
@@ -255,6 +282,8 @@ const LogoutPage = () => {
         <ClassHoursButton setClassHours={setClassHours} />
       </div>
 
+      <div className="err-div"> {errString} </div>
+
       <div className="schedule-div">
         <Schedule
           mString={monString}
@@ -271,7 +300,7 @@ const LogoutPage = () => {
           aria-label="previous_button"
           id="previous_button"
           aria-description="button to retrieve the last saved schedule"
-          onClick={() => previous()}
+          onClick={() => prev()}
         >
           Previous
         </button>
