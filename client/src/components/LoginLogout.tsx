@@ -2,7 +2,7 @@ import React from "react";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import LoginPage from "./LoginPage";
 import LogoutPage from "./LogoutPage";
-import { addLoginCookie } from "./utils/cookie";
+import { addLoginCookie, removeLoginCookie } from "./utils/cookie";
 
 export interface ILoginPageProps {
   authing: boolean;
@@ -50,6 +50,10 @@ const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
 };
 
 const Logout: React.FunctionComponent<ILoginPageProps> = (props) => {
+  const signOut = () => {
+    removeLoginCookie();
+    props.setAuthing(false);
+  };
   return (
     <div className="logout-box">
       {props.gatedContent}
@@ -58,7 +62,7 @@ const Logout: React.FunctionComponent<ILoginPageProps> = (props) => {
         aria-label="sign out button"
         aria-description="button to sign user out"
         onClick={() => {
-          props.setAuthing(false);
+          signOut();
         }}
         disabled={props.authing}
       >
