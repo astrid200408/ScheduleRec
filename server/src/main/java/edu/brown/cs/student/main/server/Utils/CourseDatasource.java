@@ -52,6 +52,9 @@ public class CourseDatasource {
    * @return
    */
   public static void calcCourseDiffic(CourseObject courseObject) {
+    if (courseObject == null) {
+      throw new NullPointerException();
+    }
     List<Double> componentScores = new ArrayList<>();
     for (CourseObject.Course course : courseObject.courses) {
       // feedback returns has avg hours, max hours
@@ -70,8 +73,14 @@ public class CourseDatasource {
 
     int index = 0;
     for (CourseObject.Course course : courseObject.courses) {
-      course.difficultyScore =
-          (int) Math.ceil(normalizedScores[index++] * 100); // Scale to 0-100 range
+      if (normalizedScores[index] >= 0) {
+        course.difficultyScore =
+            (int) Math.ceil(normalizedScores[index] * 100); // Scale to 0-100 range
+      } else {
+        System.out.println("error");
+      }
+
+      index++;
     }
   }
 
@@ -82,7 +91,7 @@ public class CourseDatasource {
    * @param additionalComponent
    * @return weighted score
    */
-  private static int getTotalWeightedScore(Coursework coursework, String additionalComponent) {
+  public static int getTotalWeightedScore(Coursework coursework, String additionalComponent) {
     double totalWeightedScore = 0.0;
 
     // assignments
@@ -129,24 +138,33 @@ public class CourseDatasource {
    * @param values
    * @return
    */
-  private static double[] normalize(double[] values) {
+  public static double[] normalize(double[] values) {
     // problem right now where the easiest class is 0 and best class is 100 -> is that something
     // that we want?
+    if (values.length == 1) {
+      double v = 0.0;
+      return new double[] {v};
+    }
     double min = Arrays.stream(values).min().orElse(0);
     double max = Arrays.stream(values).max().orElse(0);
 
+    double[] normalizedValues = new double[values.length];
+    double range = max - min;
+
     if (min == 0 || max == 0) {
       // probs error?
-      System.out.println("shouldn't happen");
+      System.out.println("should not happen");
+    }
+    if (range == 0) { // for divide by 0 errors
+      range = 1;
     }
 
     // value to range [0, 1]
-    double[] normalizedValues = new double[values.length];
-    double range = max - min;
+
     for (int i = 0; i < values.length; i++) {
       normalizedValues[i] = (values[i] - min) / range;
     }
-
+    //    System.out.println(Arrays.toString(normalizedValues));
     return normalizedValues;
   }
 }

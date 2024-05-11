@@ -3,12 +3,10 @@ package edu.brown.cs.student.main.server.Utils;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import edu.brown.cs.student.main.server.Exceptions.CourseDatasourceException;
-import edu.brown.cs.student.main.server.Utils.CourseObject.Course;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
 
 public class JSONParser {
 
@@ -57,16 +55,5 @@ public class JSONParser {
     }
   }
 
-  public static void main(String[] args) throws FileNotFoundException, CourseDatasourceException {
-    JSONParser myparser = new JSONParser();
-    myparser.createCourses();
-    List<Course> compCourses = CourseDatasource.getCoursesByDepartment(myparser.parsedJSON, "CS");
-    for (CourseObject.Course course : compCourses) {
-      System.out.println("Course Code: " + course.code);
-      System.out.println("Course Name: " + course.name);
-      System.out.println(course.syllabus);
-    }
-
-    System.out.println("done");
-  }
+  public static void main(String[] args) throws FileNotFoundException, CourseDatasourceException {}
 }

@@ -3,6 +3,7 @@ package edu.brown.cs.student.main.UnitTest;
 import static edu.brown.cs.student.main.server.Utils.CourseDatasource.normalize;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -15,14 +16,14 @@ import edu.brown.cs.student.main.server.Utils.JSONParser;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class TestScore {
   CourseObject testJSON;
 
-  JSONParser courseCreator = new JSONParser();
-  CourseObject courseObject = courseCreator.getParsedJSON();
+
 
   @Nested
   class NormalizationTest {
@@ -74,6 +75,16 @@ public class TestScore {
   @Nested
   class CourseDatasourceTest {
     CourseObject testJSON;
+    static CourseObject courseObject;
+
+    @BeforeAll
+    public static void setup() {
+      JSONParser courseCreator = new JSONParser();
+      courseCreator.createCourses();
+      System.out.println("works");
+      courseObject = courseCreator.getParsedJSON();
+      System.out.println(courseObject);
+    }
 
     /**
      * Parses JSON data from a JsonReader and converts it to the specified target type.
@@ -171,7 +182,8 @@ public class TestScore {
     void testEachHasScore() {
       CourseDatasource.calcCourseDiffic(courseObject);
       for (CourseObject.Course course : courseObject.courses) {
-        assertTrue(courseOne.difficultyScore > 0 && courseOne.difficultyScore <= 100);
+        assertTrue(course.difficultyScore >= 0 && course.difficultyScore <= 100);
+        assertNotNull(course.difficultyScore);
       }
     }
 
