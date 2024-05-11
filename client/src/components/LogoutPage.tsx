@@ -61,8 +61,13 @@ const LogoutPage = () => {
 
   useEffect(() => {
     const callFunction = async () => await getRecCourses();
-    const listCourses = callFunction();
+    callFunction();
   }, [classesIncluded]);
+
+  useEffect(() => {
+    const callFunction = async () => await genIndCourses();
+    callFunction();
+  }, [currSched]);
 
   useEffect(() => {
     setTimeout(errString);
@@ -86,12 +91,6 @@ const LogoutPage = () => {
     // Combine user classes with backend classes
     const combinedClasses = [...userClasses, ...backendData, ...nStr];
     return combinedClasses;
-
-    // // Ensure the combined result is exactly 'size' long
-    // const result = combinedClasses.slice(0, size);
-
-    // // Fill the remaining slots with "N" if needed
-    // return [...result, ...Array(size - result.length).fill("N")];
   }
 
   async function getRecCourses() {
@@ -131,11 +130,16 @@ const LogoutPage = () => {
     console.log("mergepad = " + currSched);
 
     //goes through every valid class in schedule list and prints their course info
+  }
+
+  async function genIndCourses() {
+    clearBoxes();
     for (let i = 0; i < 5; i++) {
       if (currSched[i] != "N") {
-        const courseCall = await getCourse(classesIncluded[i]);
+        const courseCall = await getCourse(currSched[i]);
         const courseInfo = courseCall.course;
         console.log(courseInfo);
+
         printCourse(
           i,
           courseInfo.name,
@@ -148,8 +152,6 @@ const LogoutPage = () => {
         );
       }
     }
-
-    return coursesArray;
   }
 
   /* This method prints out a course in one of the schedule boxes. */
@@ -204,11 +206,12 @@ const LogoutPage = () => {
   }
 
   async function prev() {
+    clearBoxes();
     const classes = await previous();
     console.log("prev: " + classes);
     for (let i = 0; i < 5; i++) {
       if (classes[i] != "N") {
-        const courseCall = await getCourse(classesIncluded[i]);
+        const courseCall = await getCourse(classes[i]);
         const courseInfo = courseCall.course;
         printCourse(
           i,
@@ -222,6 +225,12 @@ const LogoutPage = () => {
         );
       }
     }
+  }
+
+  async function random() {
+    setClassHours("ANY");
+    setClassNum(Math.floor(Math.random() * 5) + 1);
+    handleGenerate("", "");
   }
 
   /* Timeout method to remove error message after specified interval */
@@ -329,7 +338,7 @@ const LogoutPage = () => {
           aria-label="random_button"
           id="random_button"
           aria-description="button to randomly generate a schedule"
-          //onClick={handleClick}
+          onClick={() => random()}
         >
           Random
         </button>
