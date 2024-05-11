@@ -67,6 +67,8 @@ public class TestScore {
       double[] expected = {0.0, 0.0, 0.0};
       assertArrayEquals(expected, normalize(input), 0.001);
     }
+
+
   }
 
   @Nested
@@ -165,5 +167,13 @@ public class TestScore {
             CourseDatasource.calcCourseDiffic(testJSON);
           });
     }
+    @Test
+    void testEachHasScore() {
+      CourseDatasource.calcCourseDiffic(courseObject);
+      for (CourseObject.Course course : courseObject.courses) {
+        assertTrue(courseOne.difficultyScore > 0 && courseOne.difficultyScore <= 100);
+      }
+    }
+
   }
 }
