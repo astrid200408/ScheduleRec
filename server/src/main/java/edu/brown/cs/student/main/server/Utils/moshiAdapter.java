@@ -6,6 +6,9 @@ import com.squareup.moshi.Types;
 import java.lang.reflect.Type;
 import java.util.Map;
 
+/**
+ * this class adapts any map into a moshi json for querying purposes
+ */
 public class moshiAdapter {
 
   public static String toMoshiJson(Map<String, Object> map) {

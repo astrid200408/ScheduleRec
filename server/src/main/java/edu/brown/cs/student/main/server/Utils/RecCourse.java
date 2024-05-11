@@ -5,14 +5,32 @@ import edu.brown.cs.student.main.server.Exceptions.RecommendCourseException;
 import edu.brown.cs.student.main.server.Utils.CourseObject.Course;
 import java.util.*;
 
+/**
+ * this class recommends courses
+ */
 public class RecCourse {
 
   CourseObject classes;
 
+  /**
+   * this class recommends courses
+   * @param myClasses - dataset stored in a courseObject
+   */
   public RecCourse(CourseObject myClasses) {
     this.classes = myClasses;
   }
 
+  /**
+   * Grabs user input and recommends classes based on that
+   * @param givenClasses - classes a user wants to include
+   * @param schedDiffic - how difficult a user wants a schedule to be
+   * @param classTotal - how many total classes a user wants in their schedule or for the program to recommend
+   * @param currSchedDiffic - how difficult is the current schedule
+   * @param filter - for now, if there are any departments the user wants classes for
+   * @return - an array of course objects
+   * @throws RecommendCourseException - if there is no way to fit user needs to recommend courses
+   * @throws CourseDatasourceException - if there is no proper input for filter, should be a list or "N" for none.
+   */
   public List<Course> getRecCourses(
       List<String> givenClasses,
       String schedDiffic,
@@ -30,6 +48,7 @@ public class RecCourse {
 
     Difficulty difficNeeded = null;
 
+    //if there is a specific schedule difficulty goal, incorporate that
     if (schedDiffic != null && !schedDiffic.equals("ANY")) {
 
       int scoreWanted =
@@ -41,7 +60,6 @@ public class RecCourse {
       }
 
       difficNeeded = Difficulty.getDifficulty(scoreWanted / classesWanted);
-      // System.out.println(difficNeeded);
 
     }
 
@@ -49,7 +67,6 @@ public class RecCourse {
     List<Course> toReturn = new ArrayList<>();
 
     // find courses that match this and any given filters
-    System.out.println(filter);
     if (filter != null && !filter.equals("N")) {
 
       filteredCourses = CourseDatasource.getCoursesByDepartment(this.classes, filter);

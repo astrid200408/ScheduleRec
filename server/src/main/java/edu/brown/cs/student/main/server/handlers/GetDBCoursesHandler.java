@@ -10,6 +10,9 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
+/**
+ * this class grabs user saved schedules
+ */
 public class GetDBCoursesHandler implements Route {
 
   public StorageInterface storageHandler;
@@ -31,11 +34,8 @@ public class GetDBCoursesHandler implements Route {
     try {
       String uid = request.queryParams("uid");
 
-      System.out.println("rendering classes for user: " + uid);
-
       // get all the courses
       List<Map<String, Object>> vals = this.storageHandler.getCollection(uid, "courses");
-      System.out.println("VALS: " + vals);
       List<String> class_one = getCoursesNum("one", vals);
       List<String> class_two = getCoursesNum("two", vals);
       List<String> class_three = getCoursesNum("three", vals);
@@ -44,6 +44,7 @@ public class GetDBCoursesHandler implements Route {
 
       List<Map<String, Object>> courses = new ArrayList<>();
 
+      //make an array of maps for all the schedules
       if (class_one != null) {
         for (int i = 0; i < class_one.size(); i++) {
           Map<String, Object> sched = new HashMap<String, Object>();
@@ -78,6 +79,7 @@ public class GetDBCoursesHandler implements Route {
     return course;
   }
 
+  //returns an array of all courses in a dict spot, i.e. all courses labelled "course_one"
   private List<String> getCoursesNum(String course, List<Map<String, Object>> vals) {
     List<String> courses;
     try {

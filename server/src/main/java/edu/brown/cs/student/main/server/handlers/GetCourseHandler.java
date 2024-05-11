@@ -9,6 +9,9 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
+/**
+ * this class takes in a course code and grabs class information for it
+ */
 public class GetCourseHandler implements Route {
   CourseObject classes;
 
