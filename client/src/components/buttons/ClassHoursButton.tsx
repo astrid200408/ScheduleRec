@@ -14,7 +14,7 @@ export default function ClassHoursButton(props: ClassHoursButtonInterface) {
   };
   return (
     <div className="hours-buttons">
-      <p className="hours-text">Hours per week:</p>
+      <p className="hours-text">Class Difficulty:</p>
       <button
         className="less20"
         aria-label="less_than_twenty_hours_button"
@@ -22,7 +22,7 @@ export default function ClassHoursButton(props: ClassHoursButtonInterface) {
         aria-description="button for selecting less than twenty hours per week"
         onClick={() => handleClassClick("LOW")}
       >
-        &lt; 20
+        LOW
       </button>
       <button
         className="btwn2030"
@@ -31,7 +31,7 @@ export default function ClassHoursButton(props: ClassHoursButtonInterface) {
         aria-description="button for selecting between twenty and thirty hours per week"
         onClick={() => handleClassClick("MEDIUM")}
       >
-        20-30
+        MED
       </button>
       <button
         className="plus30"
@@ -40,7 +40,7 @@ export default function ClassHoursButton(props: ClassHoursButtonInterface) {
         aria-description="button for selecting thirty or more hours per week"
         onClick={() => handleClassClick("HIGH")}
       >
-        30 &#60;
+        HIGH
       </button>
       <button
         className="any"
@@ -49,7 +49,7 @@ export default function ClassHoursButton(props: ClassHoursButtonInterface) {
         aria-description="button for selecting any amount of hours per week"
         onClick={() => handleClassClick("ANY")}
       >
-        any
+        ANY
       </button>
     </div>
   );
