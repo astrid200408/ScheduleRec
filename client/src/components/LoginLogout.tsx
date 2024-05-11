@@ -60,6 +60,7 @@ const Logout: React.FunctionComponent<ILoginPageProps> = (props) => {
         onClick={() => {
           props.setAuthing(false);
         }}
+        disabled={props.authing}
       >
         Sign Out
       </button>

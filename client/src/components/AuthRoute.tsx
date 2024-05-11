@@ -7,16 +7,16 @@ interface AuthRouteProps {
 }
 
 function AuthRoute(props: AuthRouteProps) {
-  const [loggedIn, setLogin] = useState(false);
+  const [authing, setAuthing] = useState(false);
 
   // SKIP THE LOGIN BUTTON IF YOU HAVE ALREADY LOGGED IN.
-  if (!loggedIn && getLoginCookie() !== undefined) {
-    setLogin(true);
+  if (!authing && getLoginCookie() !== undefined) {
+    setAuthing(true);
   }
 
   return (
     <>
-      <LoginLogout authing={loggedIn} setAuthing={setLogin} gatedContent={props.gatedContent} />
+      <LoginLogout authing={true} setAuthing={setAuthing} gatedContent={props.gatedContent} />
     </>
   );
 }
